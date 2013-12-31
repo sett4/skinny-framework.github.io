@@ -173,7 +173,26 @@
 
 <hr/>
 
-<h4 id="toc_5">Eager Loading</h4>
+<h5 id="toc_5">Entity Equality</h5>
+
+<p>Basically using case classes for entities is recommended. As you know, Scala (until 2.11) has 22 limitation, so you may need to use normal classes for entities to treat tables that have more than 22 columns.</p>
+
+<p>In this case, entity should be defined like this (Skinny 0.9.21 or ScalikeJDBC 1.7.3 is required):</p>
+<pre class="highlight java"><span class="kd">class</span> <span class="nf">LegacyData</span><span class="p">(</span><span class="n">val</span> <span class="nl">id:</span> <span class="n">Long</span><span class="o">,</span> <span class="n">val</span> <span class="nl">c2:</span> <span class="n">String</span><span class="o">,</span> <span class="n">val</span> <span class="nl">c3:</span> <span class="n">Int</span><span class="o">,</span> <span class="o">...,</span> <span class="n">val</span> <span class="nl">c23:</span> <span class="n">Int</span><span class="o">)</span>
+  <span class="kd">extends</span> <span class="n">scalikejdbc</span><span class="o">.</span><span class="na">EntityEquality</span> <span class="o">{</span>
+  <span class="c1">// override val entityIdentity = id</span>
+  <span class="n">override</span> <span class="n">val</span> <span class="n">entityIdentity</span> <span class="o">=</span> <span class="n">s</span><span class="s">&quot;$id $c2 $c3 ... $c23&quot;</span>
+<span class="o">}</span>
+
+<span class="n">object</span> <span class="n">LegacyData</span> <span class="kd">extends</span> <span class="n">SkinnyCRUDMapper</span><span class="o">[</span><span class="n">LegacyData</span><span class="o">]</span> <span class="o">{</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</pre>
+<p>If you missed above implementation, one-to-many relationships doesn&rsquo;t work as you expect.</p>
+
+<hr/>
+
+<h4 id="toc_6">Eager Loading</h4>
 
 <p>You can call <code>includes</code> for eager loading. But nested entities&rsquo;s eager loading is not supported yet.</p>
 <pre class="highlight java"><span class="n">object</span> <span class="n">Member</span> <span class="kd">extends</span> <span class="n">SkinnyCRUDMapper</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span> <span class="o">{</span>
@@ -191,7 +210,7 @@
 
 <hr/>
 
-<h4 id="toc_6">Adding Methods</h4>
+<h4 id="toc_7">Adding Methods</h4>
 
 <p>If you need to add methods, just write methods that use ScalikeJDBC&#39; APIs directly.</p>
 <pre class="highlight java"><span class="n">object</span> <span class="n">Member</span> <span class="kd">extends</span> <span class="n">SkinnyCRUDMapper</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span> <span class="o">{</span>
@@ -217,7 +236,7 @@
 </pre>
 <hr/>
 
-<h4 id="toc_7">Timestamps</h4>
+<h4 id="toc_8">Timestamps</h4>
 
 <p><code>timetamps</code> from ActiveRecord is available as the <code>TimestampsFeature</code> trait.</p>
 <pre class="highlight java"><span class="kd">class</span> <span class="nf">Member</span><span class="p">(</span><span class="nl">id:</span> <span class="n">Long</span><span class="o">,</span> <span class="nl">name:</span> <span class="n">String</span><span class="o">,</span>
@@ -231,7 +250,7 @@
 
 <hr/>
 
-<h4 id="toc_8">Soft Deletion</h4>
+<h4 id="toc_9">Soft Deletion</h4>
 
 <p>Soft delete support is also available.</p>
 <pre class="highlight java"><span class="n">object</span> <span class="n">Member</span> <span class="kd">extends</span> <span class="n">SkinnyCRUDMapper</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span>
@@ -244,7 +263,7 @@
 
 <hr/>
 
-<h4 id="toc_9">Optimistic Lock</h4>
+<h4 id="toc_10">Optimistic Lock</h4>
 
 <p>Furthermore, optimistic lock is also available.</p>
 <pre class="highlight java"><span class="n">object</span> <span class="n">Member</span> <span class="kd">extends</span> <span class="n">SkinnyCRUDMapper</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span>

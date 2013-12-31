@@ -61,7 +61,54 @@
 
 <hr/>
 
-<h3 id="toc_1">Built-in Validation Rules</h3>
+<h3 id="toc_1">Portable Validator</h3>
+
+<p>skinny-validator is portable, so you can use skinny-validator with Play2, Scalatra (without Skinny) and any other web app frameworks. Furthermore, you can use it in not only web apps but also any other applications (batch operation, cli and so on).</p>
+
+<p>You can see simple usage of skinny-validator here:</p>
+
+<p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/validator/src/test/scala/UsageSpec.scala">validator/src/test/scala/UsageSpec.scala</a></p>
+
+<hr/>
+
+<h3 id="toc_2">Creating Custom Validators</h3>
+
+<p>The way to create new validation rule is pretty simple:</p>
+
+<ul>
+<li>extend <code>skinny.validator.ValidationRule</code> trait</li>
+<li>implement <code>def name: String</code> and <code>def isValid(Any): Boolean</code></li>
+</ul>
+
+<p>That&rsquo;s all.</p>
+
+<p>The following is an example from built-in validations.</p>
+<pre class="highlight java"><span class="kn">import</span> <span class="nn">skinny.validator._</span>
+
+<span class="n">object</span> <span class="n">required</span> <span class="kd">extends</span> <span class="nf">required</span><span class="p">(</span><span class="kc">true</span><span class="o">)</span>
+
+<span class="k">case</span> <span class="kd">class</span> <span class="nf">required</span><span class="p">(</span><span class="nl">trim:</span> <span class="n">Boolean</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span> <span class="kd">extends</span> <span class="n">ValidationRule</span> <span class="o">{</span>
+  <span class="n">def</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;required&quot;</span>
+  <span class="n">def</span> <span class="n">isValid</span><span class="o">(</span><span class="nl">v:</span> <span class="n">Any</span><span class="o">)</span> <span class="o">=</span> <span class="o">!</span><span class="n">isEmpty</span><span class="o">(</span><span class="n">v</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">trim</span><span class="o">)</span> <span class="n">v</span><span class="o">.</span><span class="na">toString</span><span class="o">.</span><span class="na">trim</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">else</span> <span class="n">v</span><span class="o">.</span><span class="na">toString</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">0</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+<p>Then you can use it like this:</p>
+<pre class="highlight java"><span class="n">val</span> <span class="n">validator</span> <span class="o">=</span> <span class="n">Validator</span><span class="o">(</span>
+  <span class="n">param</span><span class="o">(</span><span class="s">&quot;name&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Alice&quot;</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span><span class="o">,</span>
+  <span class="n">param</span><span class="o">(</span><span class="s">&quot;description&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;   &quot;</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+<span class="o">)</span>
+<span class="n">validator</span><span class="o">.</span><span class="na">hasErrors</span> <span class="c1">// false</span>
+</pre>
+<p>You can see more examples here:</p>
+
+<p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala">validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala</a></p>
+
+<hr/>
+
+<h3 id="toc_3">Built-in Validation Rules</h3>
 
 <p>In most of cases, built-in validators are useful.</p>
 
@@ -74,6 +121,8 @@
 <p>Basic usage is combining validation rules with <code>&amp;</code>. If a failure is found, rest of them will be skipped.</p>
 
 <p><code>checkAll</code> executes all the validations even if some of them already failed.</p>
+
+<p>The following is an example with Skinny Framework:</p>
 <pre class="highlight java"><span class="c1">// withDate joins birthdayYear, birthdayMonth and birthdayDay into single birthday</span>
 <span class="n">def</span> <span class="n">createParams</span> <span class="o">=</span> <span class="n">Params</span><span class="o">(</span><span class="n">params</span><span class="o">).</span><span class="na">withDate</span><span class="o">(</span><span class="s">&quot;birthday&quot;</span><span class="o">)</span>
 
@@ -99,6 +148,8 @@
   <span class="c1">// or using #fold</span>
 <span class="o">}</span>
 </pre>
+<p>See also:</p>
+
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/common/src/main/scala/skinny/ParamType.scala">/common/src/main/scala/skinny/ParamType.scala</a></p>
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/common/src/main/scala/skinny/StrongParameters.scala">/common/src/main/scala/skinny/StrongParameters.scala</a></p>
@@ -106,18 +157,6 @@
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/framework/src/main/scala/skinny/controller/feature/ValidationFeature.scala">/framework/src/main/scala/skinny/controller/feature/ValidationFeature.scala</a></p>
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/validator/src/main/scala/skinny/validator/ValidatorLike.scala">/validator/src/main/scala/skinny/validator/ValidatorLike.scala</a></p>
-
-<hr/>
-
-<h3 id="toc_2">Creating Custom Validators</h3>
-
-<p>Just implement <code>ValidationRule</code> trait.</p>
-
-<p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/validator/src/main/scala/skinny/validator/ValidationRule.scala">validator/src/main/scala/skinny/validator/ValidationRule.scala</a></p>
-
-<p>You can find many samples here:</p>
-
-<p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala">validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala</a></p>
 
             <hr/>
             <div class="alert alert-info small"> 
