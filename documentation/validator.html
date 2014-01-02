@@ -71,7 +71,7 @@
 
 <hr/>
 
-<h3 id="toc_2">Creating Custom Validators</h3>
+<h3 id="toc_2">Creating New Validation Rule</h3>
 
 <p>The way to create new validation rule is pretty simple:</p>
 
@@ -97,14 +97,30 @@
 </pre>
 <p>Then you can use it like this:</p>
 <pre class="highlight java"><span class="n">val</span> <span class="n">validator</span> <span class="o">=</span> <span class="n">Validator</span><span class="o">(</span>
-  <span class="n">param</span><span class="o">(</span><span class="s">&quot;name&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Alice&quot;</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span><span class="o">,</span>
-  <span class="n">param</span><span class="o">(</span><span class="s">&quot;description&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;   &quot;</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+  <span class="n">param</span><span class="o">(</span><span class="s">&quot;name&quot;</span> <span class="o">-&gt;</span> <span class="kc">null</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span>
 <span class="o">)</span>
 <span class="n">validator</span><span class="o">.</span><span class="na">hasErrors</span> <span class="c1">// false</span>
-</pre>
-<p>You can see more examples here:</p>
 
-<p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala">validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala</a></p>
+<span class="n">val</span> <span class="n">error</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="na">errors</span><span class="o">.</span><span class="na">head</span>
+<span class="n">error</span><span class="o">.</span><span class="na">name</span> <span class="c1">// -&gt; required</span>
+<span class="n">error</span><span class="o">.</span><span class="na">messageParmas</span> <span class="c1">// -&gt; List(&quot;name&quot;)</span>
+</pre>
+<p>Validation rule which accepts value when using such as <code>minLength(6)</code> is like this:</p>
+<pre class="highlight java"><span class="k">case</span> <span class="kd">class</span> <span class="nf">minLength</span><span class="p">(</span><span class="nl">min:</span> <span class="n">Int</span><span class="o">)</span> <span class="kd">extends</span> <span class="n">ValidationRule</span> <span class="o">{</span>
+  <span class="n">def</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;minLength&quot;</span>
+  <span class="n">override</span> <span class="n">def</span> <span class="n">messageParams</span> <span class="o">=</span> <span class="n">Seq</span><span class="o">(</span><span class="n">min</span><span class="o">.</span><span class="na">toString</span><span class="o">)</span>
+
+  <span class="n">def</span> <span class="n">isValid</span><span class="o">(</span><span class="nl">v:</span> <span class="n">Any</span><span class="o">)</span> <span class="o">=</span> <span class="n">isEmpty</span><span class="o">(</span><span class="n">v</span><span class="o">)</span> <span class="o">||</span> <span class="o">{</span>
+    <span class="n">toHasSize</span><span class="o">(</span><span class="n">v</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="na">size</span> <span class="o">&gt;=</span> <span class="n">min</span><span class="o">).</span><span class="na">getOrElse</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">toString</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;=</span> <span class="n">min</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">val</span> <span class="n">validator</span> <span class="o">=</span> <span class="n">Validator</span><span class="o">(</span>
+  <span class="n">param</span><span class="o">(</span><span class="s">&quot;name&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;xxxx&quot;</span><span class="o">)</span> <span class="n">is</span> <span class="n">checkAll</span><span class="o">(</span><span class="n">required</span><span class="o">,</span> <span class="n">minLength</span><span class="o">(</span><span class="mi">6</span><span class="o">)),</span>
+  <span class="n">param</span><span class="o">(</span><span class="s">&quot;password&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;xxxx&quot;</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">minLength</span><span class="o">(</span><span class="mi">6</span><span class="o">)</span>
+<span class="o">)</span>
+</pre>
+<p>Basic usage is combining validation rules with <code>&amp;</code>. If a failure is found, rest of them will be skipped. <code>checkAll</code> executes all the validations even if some of them already failed.</p>
 
 <hr/>
 
@@ -114,13 +130,58 @@
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala">validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala</a></p>
 
-<p>Usage:</p>
-
 <p><a href="https://github.com/skinny-framework/skinny-framework/tree/master/validator/src/test/scala/skinny/validator">validator/src/test/scala/skinny/validator</a></p>
 
-<p>Basic usage is combining validation rules with <code>&amp;</code>. If a failure is found, rest of them will be skipped.</p>
+<hr/>
 
-<p><code>checkAll</code> executes all the validations even if some of them already failed.</p>
+<h3 id="toc_4">Validator &amp; MapValidator</h3>
+
+<p>skinny-validator provides <code>Validator</code> and <code>MapValidator</code>. You already see <code>Validator</code> in above code. This one accepts parameters when defining validation rules.</p>
+
+<p><code>MapValidator</code> is another one which accepts <code>Map[String, Any]</code> object as parameters. Usually <code>MapValidator</code> is more useful in web applications.</p>
+<pre class="highlight java"><span class="n">val</span> <span class="n">params</span> <span class="o">=</span> <span class="n">Map</span><span class="o">(</span><span class="s">&quot;name&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Alice&quot;</span><span class="o">,</span> <span class="s">&quot;age&quot;</span> <span class="o">-&gt;</span> <span class="mi">20</span><span class="o">)</span>
+
+<span class="n">val</span> <span class="n">validator</span> <span class="o">=</span> <span class="n">MapValidator</span><span class="o">(</span><span class="n">params</span><span class="o">)(</span>
+  <span class="n">paramKey</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span><span class="o">,</span>
+  <span class="n">paramKey</span><span class="o">(</span><span class="s">&quot;age&quot;</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">numeric</span>
+<span class="o">)</span>
+</pre>
+<hr/>
+
+<h3 id="toc_5">Error Messages</h3>
+
+<p>skinny-validator&rsquo;s <code>Error</code> looks like this:</p>
+<pre class="highlight java"><span class="n">val</span> <span class="n">error</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="na">errors</span><span class="o">.</span><span class="na">head</span>
+<span class="n">error</span><span class="o">.</span><span class="na">name</span> <span class="c1">// -&gt; required</span>
+<span class="n">error</span><span class="o">.</span><span class="na">messageParmas</span> <span class="c1">// -&gt; List(&quot;name&quot;)</span>
+</pre>
+<p><code>skinny.validator.Messages</code> loads error messages from *.conf or *.properties.</p>
+
+<p>This is <code>src/main/resources/messages.conf</code> example:</p>
+<pre class="highlight text">error {
+  required=&quot;{0} is required&quot;
+  minLength=&quot;{0} length must be greater than or equal to {1}&quot;
+}
+</pre>
+<p>Now <code>Messages</code> can load error messages for validation errors named &ldquo;required&rdquo; or &ldquo;minLength&rdquo;. Name comes from <code>ValidationRule#name</code>.</p>
+<pre class="highlight java"><span class="n">val</span> <span class="n">messages</span> <span class="o">=</span> <span class="n">Messages</span><span class="o">.</span><span class="na">loadFromConfig</span><span class="o">()</span>
+<span class="c1">// val messages = Messages.loadFromConfig(&quot;messages2&quot;) // loads messages2.conf</span>
+<span class="c1">// val messages = Messages.loadFromProperties() // loads messages.properties</span>
+<span class="c1">// val messages_ja = Messages.loadFromConfig(locale = Option(locale)) // loads messages_ja.conf</span>
+
+<span class="n">messages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;required&quot;</span><span class="o">,</span> <span class="n">Seq</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">))</span> 
+<span class="c1">// -&gt; Some(&quot;name is required&quot;)</span>
+
+<span class="n">messages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;minLength&quot;</span><span class="o">,</span> <span class="n">Seq</span><span class="o">(</span><span class="s">&quot;password&quot;</span><span class="o">,</span> <span class="mi">6</span><span class="o">))</span> 
+<span class="c1">// -&gt; Some(&quot;password length must be greater than or equal to 6&quot;)</span>
+</pre>
+<hr/>
+
+<h3 id="toc_6">How It Works in Skinny apps</h3>
+
+<p>You can easily understand how skinny-valdiator works in Skinny apps.</p>
+
+<p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/framework/src/main/scala/skinny/controller/feature/ValidationFeature.scala">framework/src/main/scala/skinny/controller/feature/ValidationFeature.scala</a></p>
 
 <p>The following is an example with Skinny Framework:</p>
 <pre class="highlight java"><span class="c1">// withDate joins birthdayYear, birthdayMonth and birthdayDay into single birthday</span>
@@ -143,6 +204,7 @@
     <span class="n">val</span> <span class="n">id</span> <span class="o">=</span> <span class="n">Member</span><span class="o">.</span><span class="na">createNewModel</span><span class="o">(</span><span class="n">createParams</span><span class="o">.</span><span class="na">permit</span><span class="o">(</span><span class="n">createStrongParameters</span><span class="o">))</span>
     <span class="n">redirect</span><span class="o">(</span><span class="n">s</span><span class="s">&quot;/members/${id}&quot;</span><span class="o">)</span>
   <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="c1">// error messages is set as &quot;errorMessages&quot; and &quot;keyAndErrorMessages&quot;</span>
     <span class="n">render</span><span class="o">(</span><span class="s">&quot;/members/new&quot;</span><span class="o">)</span>
   <span class="o">}</span>
   <span class="c1">// or using #fold</span>
@@ -150,13 +212,9 @@
 </pre>
 <p>See also:</p>
 
-<p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/common/src/main/scala/skinny/ParamType.scala">/common/src/main/scala/skinny/ParamType.scala</a></p>
+<p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/common/src/main/scala/skinny/ParamType.scala">common/src/main/scala/skinny/ParamType.scala</a></p>
 
-<p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/common/src/main/scala/skinny/StrongParameters.scala">/common/src/main/scala/skinny/StrongParameters.scala</a></p>
-
-<p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/framework/src/main/scala/skinny/controller/feature/ValidationFeature.scala">/framework/src/main/scala/skinny/controller/feature/ValidationFeature.scala</a></p>
-
-<p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/validator/src/main/scala/skinny/validator/ValidatorLike.scala">/validator/src/main/scala/skinny/validator/ValidatorLike.scala</a></p>
+<p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/common/src/main/scala/skinny/StrongParameters.scala">common/src/main/scala/skinny/StrongParameters.scala</a></p>
 
             <hr/>
             <div class="alert alert-info small"> 
