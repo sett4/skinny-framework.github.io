@@ -99,10 +99,11 @@
 <pre class="highlight java"><span class="n">val</span> <span class="n">validator</span> <span class="o">=</span> <span class="n">Validator</span><span class="o">(</span>
   <span class="n">param</span><span class="o">(</span><span class="s">&quot;name&quot;</span> <span class="o">-&gt;</span> <span class="kc">null</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span>
 <span class="o">)</span>
-<span class="n">validator</span><span class="o">.</span><span class="na">hasErrors</span> <span class="c1">// false</span>
+<span class="n">validator</span><span class="o">.</span><span class="na">hasErrors</span> <span class="c1">// true</span>
 
-<span class="n">val</span> <span class="n">error</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="na">errors</span><span class="o">.</span><span class="na">head</span>
-<span class="n">error</span><span class="o">.</span><span class="na">name</span> <span class="c1">// -&gt; required</span>
+<span class="n">val</span> <span class="nl">errorsForName:</span> <span class="n">Seq</span><span class="o">[</span><span class="n">Error</span><span class="o">]</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="na">errors</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">)</span>
+<span class="n">val</span> <span class="nl">error:</span> <span class="n">Error</span> <span class="o">=</span> <span class="n">errorsForName</span><span class="o">.</span><span class="na">head</span>
+<span class="n">error</span><span class="o">.</span><span class="na">name</span> <span class="c1">// -&gt; &quot;required&quot;</span>
 <span class="n">error</span><span class="o">.</span><span class="na">messageParmas</span> <span class="c1">// -&gt; List(&quot;name&quot;)</span>
 </pre>
 <p>Validation rule which accepts value when using such as <code>minLength(6)</code> is like this:</p>
