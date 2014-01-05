@@ -73,7 +73,7 @@
 <li>def toJSON(v: Any): JValue</li>
 <li>def toJSONString(v: Any, underscoreKeys: Boolean = true): String </li>
 <li>def toPrettyJSONString(v: Any, underscoreKeys: Boolean = true): String</li>
-<li>def fromJSONString<a href="json:%20String">A</a>(implicit mf: Manifest[A]): Option[A] </li>
+<li>def fromJSONString[A](json: String)(implicit mf: Manifest[A]): Option[A] </li>
 </ul>
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/develop/framework/src/main/scala/skinny/util/JSONStringOps.scala">framework/src/main/scala/skinny/util/JSONStringOps.scala</a></p>
@@ -111,6 +111,8 @@
 
 <span class="n">val</span> <span class="n">jsonString2</span> <span class="o">=</span> <span class="n">userResponse</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">r</span> <span class="o">=&gt;</span> <span class="n">toJSONString</span><span class="o">(</span><span class="n">r</span><span class="o">))</span>
 </pre>
+<p>See also: <a href="https://github.com/skinny-framework/skinny-framework/blob/master/framework/src/test/scala/skinny/util/JSONStringOpsSpec.scala">framework/src/test/scala/skinny/util/JSONStringOpsSpec.scala</a></p>
+
 <p>If you need more complex operations, use <a href="https://github.com/json4s/json4s">json4s</a> directly.</p>
 
             <hr/>
