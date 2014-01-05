@@ -28,6 +28,7 @@
                 <li><a href="/documentation/validator.html">Validator</a></li>
                 <li><a href="/documentation/view-templates.html">View Templates</a></li>
                 <li><a href="/documentation/json.html">Working with JSON</a></li>
+                <li><a href="/documentation/assets.html">Assets Support</a></li>
                 <li><a href="/documentation/orm.html">O/R Mapper</a></li>
                 <li><a href="/documentation/factory-girl.html">FactoryGirl</a></li>
                 <li><a href="/documentation/db-migration.html">DB Migration</a></li>
@@ -50,6 +51,7 @@
             <p><a href="/documentation/validator.html">Validator</a></p>
             <p><a href="/documentation/view-templates.html">View Templates</a></p>
             <p><a href="/documentation/json.html">Working with JSON</a></p>
+            <p><a href="/documentation/assets.html">Assets Support</a></p>
             <p><a href="/documentation/orm.html">O/R Mapper</a></p>
             <p><a href="/documentation/factory-girl.html">FactoryGirl</a></p>
             <p><a href="/documentation/db-migration.html">DB Migration</a></p>
@@ -305,7 +307,7 @@ yo skinny
   &quot;org.skinny-framework&quot; %% &quot;skinny-test&quot;      % &quot;[0.9,)&quot; % &quot;test&quot;
 )
 </pre>
-<p>And then, add <code>AssetsController</code> to routes. Now you can easily use CoffeeScript, TypeScript and LESS.</p>
+<p>And then, add <code>AssetsController</code> to routes. Now you can easily use CoffeeScript, LESS and Sass.</p>
 <pre class="highlight java"><span class="c1">// src/main/scala/ScalatraBootstrap.scala</span>
 <span class="kd">class</span> <span class="nc">ScalatraBootstrap</span> <span class="n">exntends</span> <span class="n">SkinnyLifeCycle</span> <span class="o">{</span>
   <span class="n">override</span> <span class="n">def</span> <span class="n">initSkinnyApp</span><span class="o">(</span><span class="nl">ctx:</span> <span class="n">ServletContext</span><span class="o">)</span> <span class="o">{</span>
@@ -319,28 +321,19 @@ yo skinny
 
 <h4 id="toc_14">CoffeeScript</h4>
 
-<p>If you use CoffeeScript, just put *.coffee files under <code>WEB-INF/assets/coffee</code>:</p>
-<pre class="highlight coffeescript"><span class="c1"># src/main/webapp/WEB-INF/assets/coffee/echo.coffee
-</span><span class="nx">echo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="na">log</span> <span class="nx">v</span>
-<span class="nx">echo</span> <span class="s">&quot;foo&quot;</span>
-</pre>
-<p>You can access the latest compiled JavaScript code at <code>http://localhost:8080/assets/js/echo.js</code>.</p>
+<p>Just put *.coffee files under <code>WEB-INF/assets/coffee</code>:</p>
 
 <h4 id="toc_15">LESS</h4>
 
-<p>If you use LESS, just put *.less files under <code>WEB-INF/assets/less</code>:</p>
-<pre class="highlight text">// src/main/webapp/WEB-INF/assets/less/box.less
-@base: #f938ab;
-.box {
-  color: saturate(@base, 5%);
-  border-color: lighten(@base, 30%);
-}
-</pre>
-<p>You can access the latest compiled CSS file at <code>http://localhost:8080/assets/css/box.css</code></p>
+<p>Just put *.less files under <code>WEB-INF/assets/less</code>:</p>
 
 <h4 id="toc_16">Sass</h4>
 
 <p>If you use Sassy CSS, put *.scss files under <code>WEB-INF/assets/scss</code> or <code>WEB-INF/assets/sass</code>. If you use Sass Indented Syntax, put *.sass files under <code>WEB-INF/assets/sass</code>.</p>
+
+<p>See in detail:</p>
+
+<p><a href="/documentation/assets.html">Assets Support</a></p>
 
 <hr/>
 
@@ -352,7 +345,7 @@ yo skinny
 
   <span class="n">it</span> <span class="n">should</span> <span class="s">&quot;show index page&quot;</span> <span class="n">in</span> <span class="o">{</span>
     <span class="n">withSession</span><span class="o">(</span><span class="s">&quot;userId&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Alice&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">get</span><span class="o">(</span><span class="s">&quot;/members&quot;</span><span class="o">)</span> <span class="o">{</span> <span class="n">status</span> <span class="n">should</span> <span class="n">equal</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span> <span class="o">}</span>
+    <span class="n">i</span>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/members&quot;</span><span class="o">)</span> <span class="o">{</span> <span class="n">status</span> <span class="n">should</span> <span class="n">equal</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span> <span class="o">}</span>
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
