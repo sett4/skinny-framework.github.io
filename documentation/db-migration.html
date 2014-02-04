@@ -87,7 +87,7 @@
 <hr/>
 
 <p>Just run the following command.</p>
-<pre class="highlight text">./skinny db:migrate [env] [dbname]
+<pre class="highlight plaintext">./skinny db:migrate [env] [dbname]
 </pre>
 <p>This command expects <code>src/main/resources/db/migration/V***__***.sql</code> files. </p>
 
@@ -100,37 +100,37 @@
 <p>If you need to change the location of SQL files or need to migrate several DBs, modify <code>{env}.db.{dbname}.migration.locations</code> in <code>application.conf</code>.</p>
 
 <p>In the following example, db:migrate command scans under <code>src/main/resources/db/migration/development/default</code>.</p>
-<pre class="highlight text">development {
+<pre class="highlight plaintext">development {
   db {
     default {
-      driver=&quot;org.h2.Driver&quot;
-      url=&quot;jdbc:h2:file:db/example-development&quot;
-      user=&quot;sa&quot;
-      password=&quot;sa&quot;
+      driver="org.h2.Driver"
+      url="jdbc:h2:file:db/example-development"
+      user="sa"
+      password="sa"
       migration {
-        locations: [&quot;development.default&quot;]
+        locations: ["development.default"]
       }
     }
   }
 }
 </pre>
 <p>Yet anothe DB&rsquo;s migration example:</p>
-<pre class="highlight text">development {
+<pre class="highlight plaintext">development {
   db {
     yetanother {
-      driver=&quot;org.h2.Driver&quot;
-      url=&quot;jdbc:h2:file:db/yetanother&quot;
-      user=&quot;sa&quot;
-      password=&quot;sa&quot;
+      driver="org.h2.Driver"
+      url="jdbc:h2:file:db/yetanother"
+      user="sa"
+      password="sa"
       migration {
-        locations: [&quot;development.yetanother&quot;]
+        locations: ["development.yetanother"]
       }
     }
   }
 }
 </pre>
 <p>Command is like this:</p>
-<pre class="highlight text">./skinny db:migrate development yetanother
+<pre class="highlight plaintext">./skinny db:migrate development yetanother
 </pre>
 <hr/>
 
@@ -139,8 +139,8 @@
 <hr/>
 
 <p>Scaffolding generates migration SQL file. Try it with <a href="https://github.com/skinny-framework/skinny-framework/releases">skinny-blank-app.zip</a>!</p>
-<pre class="highlight text">./skinny g scaffold:jade members member name:String birthday:LocalDate
-</pre><pre class="highlight text">./skinny db:migrate
+<pre class="highlight plaintext">./skinny g scaffold:jade members member name:String birthday:LocalDate
+</pre><pre class="highlight plaintext">./skinny db:migrate
 ./skinny db:migrate test
 </pre>
             <hr/>

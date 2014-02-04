@@ -88,8 +88,8 @@
 
 <p>To understand how to use SkinnyMailer, try the following code on the Scala REPL (./skinny console)</p>
 <pre class="highlight java"><span class="c1">// https://support.google.com/accounts/answer/185833</span>
-<span class="n">val</span> <span class="n">yourGmail</span> <span class="o">=</span> <span class="s">&quot;*****@gmail.com&quot;</span>
-<span class="n">val</span> <span class="n">yourPassword</span> <span class="o">=</span> <span class="s">&quot;*****&quot;</span>
+<span class="n">val</span> <span class="n">yourGmail</span> <span class="o">=</span> <span class="s">"*****@gmail.com"</span>
+<span class="n">val</span> <span class="n">yourPassword</span> <span class="o">=</span> <span class="s">"*****"</span>
 
 <span class="kn">import</span> <span class="nn">skinny.mailer._</span>
 
@@ -97,9 +97,9 @@
 <span class="n">val</span> <span class="n">config</span> <span class="o">=</span> <span class="n">SkinnyMailerConfig</span><span class="o">.</span><span class="na">default</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span>
   <span class="n">debug</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span>
   <span class="n">defaultFrom</span> <span class="o">=</span> <span class="n">Some</span><span class="o">(</span><span class="n">yourGmail</span><span class="o">),</span>
-  <span class="n">transportProtocol</span> <span class="o">=</span> <span class="s">&quot;smtps&quot;</span><span class="o">,</span>
+  <span class="n">transportProtocol</span> <span class="o">=</span> <span class="s">"smtps"</span><span class="o">,</span>
   <span class="n">smtp</span> <span class="o">=</span> <span class="n">SkinnyMailerSmtpConfig</span><span class="o">.</span><span class="na">default</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span>
-    <span class="n">host</span> <span class="o">=</span> <span class="s">&quot;smtp.gmail.com&quot;</span><span class="o">,</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="s">"smtp.gmail.com"</span><span class="o">,</span>
     <span class="n">port</span> <span class="o">=</span> <span class="mi">465</span><span class="o">,</span>
     <span class="n">authEnabled</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">Some</span><span class="o">(</span><span class="n">yourGmail</span><span class="o">),</span>
@@ -114,22 +114,22 @@
 <span class="n">GMail</span><span class="o">.</span>
   <span class="nf">to</span><span class="p">(</span><span class="n">yourGmail</span><span class="o">).</span>
   <span class="n">cc</span><span class="o">(</span><span class="n">yourGmail</span><span class="o">).</span>
-  <span class="n">subject</span><span class="o">(</span><span class="s">&quot;SkinnyMailer GMail Test&quot;</span><span class="o">).</span>
+  <span class="n">subject</span><span class="o">(</span><span class="s">"SkinnyMailer GMail Test"</span><span class="o">).</span>
   <span class="n">body</span> <span class="o">{</span>
-    <span class="s">&quot;&quot;&quot;You succeeded sending email via GMail SMTP server!
+    <span class="s">"""You succeeded sending email via GMail SMTP server!
     |
     |Blah-blah-blah...
     |
-  &quot;&quot;&quot;</span><span class="o">.</span><span class="na">stripMargin</span>
+  """</span><span class="o">.</span><span class="na">stripMargin</span>
   <span class="o">}.</span><span class="na">deliver</span><span class="o">()</span>
 
 <span class="c1">// Sending HTML email with attachments</span>
 <span class="n">GMail</span><span class="o">.</span>
   <span class="nf">to</span><span class="p">(</span><span class="n">yourGmail</span><span class="o">).</span>
   <span class="n">cc</span><span class="o">(</span><span class="n">yourGmail</span><span class="o">).</span>
-  <span class="n">subject</span><span class="o">(</span><span class="s">&quot;SkinnyMailer GMail Test 2&quot;</span><span class="o">).</span>
-  <span class="n">htmlBody</span><span class="o">(</span><span class="s">&quot;&lt;hr/&gt;&lt;b&gt;HTML&lt;/b&gt; sample!&lt;br/&gt;&lt;hr/&gt;&quot;</span><span class="o">).</span>
-  <span class="n">attchment</span><span class="o">(</span><span class="s">&quot;memo.txt&quot;</span><span class="o">,</span> <span class="s">&quot;memomemo&quot;</span><span class="o">,</span> <span class="s">&quot;text/plain; charset=utf-8&quot;</span><span class="o">).</span>
+  <span class="n">subject</span><span class="o">(</span><span class="s">"SkinnyMailer GMail Test 2"</span><span class="o">).</span>
+  <span class="n">htmlBody</span><span class="o">(</span><span class="s">"&lt;hr/&gt;&lt;b&gt;HTML&lt;/b&gt; sample!&lt;br/&gt;&lt;hr/&gt;"</span><span class="o">).</span>
+  <span class="n">attchment</span><span class="o">(</span><span class="s">"memo.txt"</span><span class="o">,</span> <span class="s">"memomemo"</span><span class="o">,</span> <span class="s">"text/plain; charset=utf-8"</span><span class="o">).</span>
   <span class="n">deliver</span><span class="o">()</span>
 </pre>
 <hr/>
@@ -139,13 +139,13 @@
 <hr/>
 
 <p>Configuration should be defined in src/main/resources/application.conf.</p>
-<pre class="highlight text">development {
+<pre class="highlight plaintext">development {
   db {
     default {
-      driver=&quot;org.h2.Driver&quot;
-      url=&quot;jdbc:h2:file:db/example-development&quot;
-      user=&quot;sa&quot;
-      password=&quot;sa&quot;
+      driver="org.h2.Driver"
+      url="jdbc:h2:file:db/example-development"
+      user="sa"
+      password="sa"
       poolInitialSize=2
       poolMaxSize=10
     }
@@ -153,12 +153,12 @@
   mailer {
     default {
       debug=true
-      mimeVersion=&quot;1.0&quot;
-      charset=&quot;UTF-8&quot;
-      contentType=&quot;text/html&quot;
-      from=&quot;xxxxx+from@gmail.com&quot;
+      mimeVersion="1.0"
+      charset="UTF-8"
+      contentType="text/html"
+      from="xxxxx+from@gmail.com"
       smtp {
-        host=&quot;smtp.gmail.com&quot;
+        host="smtp.gmail.com"
         port=465
         connectTimeoutMillis=3000
         readTimeoutMillis=6000
@@ -168,13 +168,13 @@
         auth {
           //enabled=true
           enabled=false
-          user=&quot;xxxxx@gmail.com&quot;
+          user="xxxxx@gmail.com"
           password=${?GMAIL_PASSWORD}
         }
       }
       transport {
-        //protocol=&quot;smtps&quot;
-        protocol=&quot;logging&quot;
+        //protocol="smtps"
+        protocol="logging"
       }
     }
   }

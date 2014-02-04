@@ -87,7 +87,7 @@
 <hr/>
 
 <p>It&rsquo;s utmost simple to do that. Just </p>
-<pre class="highlight text">./skinny package
+<pre class="highlight plaintext">./skinny package
 </pre>
 <p>You will see created war file under <code>build/target/scala_2.10</code>.</p>
 
@@ -100,13 +100,13 @@
 <hr/>
 
 <p>What&rsquo;s more, you can easily create stand alone jar file by just run the following command: </p>
-<pre class="highlight text">./skinny package:standalone
+<pre class="highlight plaintext">./skinny package:standalone
 </pre>
 <p>After a while, you will get standalone jar file. </p>
-<pre class="highlight text">java -jar standalone-build/target/scala-2.10/skinny-standalone-app-assembly-0.1.0-SNAPSHOT.jar
+<pre class="highlight plaintext">java -jar standalone-build/target/scala-2.10/skinny-standalone-app-assembly-0.1.0-SNAPSHOT.jar
 </pre>
 <p>You can pass configuration via system properties. Otherwise, it&rsquo;s also possible to use environment variables.</p>
-<pre class="highlight text">java -jar -Dskinny.port=9000 -Dskinny.env=production \
+<pre class="highlight plaintext">java -jar -Dskinny.port=9000 -Dskinny.env=production \
   standalone-build/target/scala-2.10/skinny-standalone-app-assembly-0.1.0-SNAPSHOT.jar
 </pre>
 <hr/>

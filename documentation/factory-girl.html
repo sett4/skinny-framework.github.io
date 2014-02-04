@@ -81,7 +81,7 @@
 <p>FactoryGirl is a part of Skinny ORM, so you can use FactoryGirl even in your Play2 apps!</p>
 
 <p>Just add skinny-orm to your apps.</p>
-<pre class="highlight text">libraryDependencies += &quot;org.skinny-framewrok&quot; %% &quot;skinny-orm&quot; % &quot;[0.9,)&quot;
+<pre class="highlight plaintext">libraryDependencies += "org.skinny-framewrok" %% "skinny-orm" % "[0.9,)"
 </pre>
 <hr/>
 
@@ -108,29 +108,29 @@
 
 
 <span class="n">val</span> <span class="n">company1</span> <span class="o">=</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Company</span><span class="o">).</span><span class="na">create</span><span class="o">()</span>
-<span class="n">val</span> <span class="n">company2</span> <span class="o">=</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Company</span><span class="o">).</span><span class="na">create</span><span class="o">(</span><span class="err">&#39;</span><span class="n">name</span> <span class="o">-&gt;</span> <span class="s">&quot;FactoryPal, Inc.&quot;</span><span class="o">)</span>
+<span class="n">val</span> <span class="n">company2</span> <span class="o">=</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Company</span><span class="o">).</span><span class="na">create</span><span class="o">(</span><span class="err">'</span><span class="n">name</span> <span class="o">-&gt;</span> <span class="s">"FactoryPal, Inc."</span><span class="o">)</span>
 
-<span class="n">val</span> <span class="n">country</span> <span class="o">=</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Country</span><span class="o">,</span> <span class="err">&#39;</span><span class="n">countryyy</span><span class="o">).</span><span class="na">create</span><span class="o">()</span>
+<span class="n">val</span> <span class="n">country</span> <span class="o">=</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Country</span><span class="o">,</span> <span class="err">'</span><span class="n">countryyy</span><span class="o">).</span><span class="na">create</span><span class="o">()</span>
 
-<span class="n">val</span> <span class="n">memberFactory</span> <span class="o">=</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Member</span><span class="o">).</span><span class="na">withVariables</span><span class="o">(</span><span class="err">&#39;</span><span class="n">countryId</span> <span class="o">-&gt;</span> <span class="n">country</span><span class="o">.</span><span class="na">id</span><span class="o">)</span>
-<span class="n">val</span> <span class="n">member</span> <span class="o">=</span> <span class="n">memberFactory</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="err">&#39;</span><span class="n">companyId</span> <span class="o">-&gt;</span> <span class="n">company1</span><span class="o">.</span><span class="na">id</span><span class="o">,</span> <span class="err">&#39;</span><span class="n">createdAt</span> <span class="o">-&gt;</span> <span class="n">DateTime</span><span class="o">.</span><span class="na">now</span><span class="o">)</span>
+<span class="n">val</span> <span class="n">memberFactory</span> <span class="o">=</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Member</span><span class="o">).</span><span class="na">withVariables</span><span class="o">(</span><span class="err">'</span><span class="n">countryId</span> <span class="o">-&gt;</span> <span class="n">country</span><span class="o">.</span><span class="na">id</span><span class="o">)</span>
+<span class="n">val</span> <span class="n">member</span> <span class="o">=</span> <span class="n">memberFactory</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="err">'</span><span class="n">companyId</span> <span class="o">-&gt;</span> <span class="n">company1</span><span class="o">.</span><span class="na">id</span><span class="o">,</span> <span class="err">'</span><span class="n">createdAt</span> <span class="o">-&gt;</span> <span class="n">DateTime</span><span class="o">.</span><span class="na">now</span><span class="o">)</span>
 </pre>
 <p>In this example, <code>src/test/resources/factories.conf</code> is like this:</p>
-<pre class="highlight text">countryyy {
-  name=&quot;Japan&quot;
+<pre class="highlight plaintext">countryyy {
+  name="Japan"
 }
 member {
-  countryId=&quot;#{countryId}&quot;
+  countryId="#{countryId}"
 }
 company {
-  name=&quot;FactoryGirl, Inc.&quot;
+  name="FactoryGirl, Inc."
 }
 name {
-  first=&quot;Kazuhiro&quot;
-  last=&quot;Sera&quot;
+  first="Kazuhiro"
+  last="Sera"
 }
 skill {
-  name=&quot;Scala Programming&quot;
+  name="Scala Programming"
 }
 </pre>
 <hr/>
@@ -146,12 +146,12 @@ skill {
 <p>Attributes passed by this method will be used for replacing variables such as &ldquo;#{userId}&rdquo; in factories.conf.</p>
 <pre class="highlight java"><span class="cm">/* factories.conf
 member {
-  name=&quot;Alice&quot;
-  countryId=&quot;#{cntId}&quot;
+  name="Alice"
+  countryId="#{cntId}"
 }
  */</span>
 <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Member</span><span class="o">).</span><span class="na">withVariables</span><span class="o">(</span>
-  <span class="err">&#39;</span><span class="n">cntId</span> <span class="o">-&gt;</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Country</span><span class="o">).</span><span class="na">create</span><span class="o">().</span><span class="na">id</span><span class="o">).</span><span class="na">create</span><span class="o">()</span>
+  <span class="err">'</span><span class="n">cntId</span> <span class="o">-&gt;</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Country</span><span class="o">).</span><span class="na">create</span><span class="o">().</span><span class="na">id</span><span class="o">).</span><span class="na">create</span><span class="o">()</span>
 
 <span class="c1">// will use name: Alice, countryId: 234</span>
 </pre>
@@ -162,14 +162,14 @@ member {
 <p>Thesse attributes will overwrite the values in factories.conf. </p>
 <pre class="highlight java"><span class="cm">/* factories.conf
 member {
-  name=&quot;Alice&quot;
-  country=&quot;USA&quot;
+  name="Alice"
+  country="USA"
 }
  */</span>
-<span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Member</span><span class="o">).</span><span class="na">withAttributes</span><span class="o">(</span><span class="err">&#39;</span><span class="n">country</span> <span class="o">-&gt;</span> <span class="s">&quot;Japan&quot;</span><span class="o">).</span><span class="na">create</span><span class="o">()</span>
+<span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Member</span><span class="o">).</span><span class="na">withAttributes</span><span class="o">(</span><span class="err">'</span><span class="n">country</span> <span class="o">-&gt;</span> <span class="s">"Japan"</span><span class="o">).</span><span class="na">create</span><span class="o">()</span>
 <span class="c1">// will use name: Alice, country: Japan</span>
 
-<span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Member</span><span class="o">).</span><span class="na">create</span><span class="o">(</span><span class="err">&#39;</span><span class="n">country</span> <span class="o">-&gt;</span> <span class="s">&quot;Japan&quot;</span><span class="o">)</span>
+<span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Member</span><span class="o">).</span><span class="na">create</span><span class="o">(</span><span class="err">'</span><span class="n">country</span> <span class="o">-&gt;</span> <span class="s">"Japan"</span><span class="o">)</span>
 <span class="c1">// do the same thing!</span>
 </pre>
 <hr/>

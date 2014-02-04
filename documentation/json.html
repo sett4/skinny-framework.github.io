@@ -101,20 +101,20 @@
   <span class="nl">isAlive:</span> <span class="n">Boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="nl">friend:</span> <span class="n">Option</span><span class="o">[</span><span class="n">User</span><span class="o">]</span> <span class="o">=</span> <span class="n">None</span><span class="o">)</span>
 
 <span class="n">val</span> <span class="n">jsonString</span> <span class="o">=</span>
-  <span class="s">&quot;&quot;&quot;{
-    |  &quot;</span><span class="n">user</span><span class="s">&quot;: {
-    |    &quot;</span><span class="n">name</span><span class="s">&quot; : &quot;</span><span class="n">toto</span><span class="s">&quot;,
-    |    &quot;</span><span class="n">age</span><span class="s">&quot; : 25,
-    |    &quot;</span><span class="n">email</span><span class="s">&quot; : &quot;</span><span class="n">toto</span><span class="nd">@jmail</span><span class="o">.</span><span class="na">com</span><span class="s">&quot;,
-    |    &quot;</span><span class="n">isAlive</span><span class="s">&quot; : true,
-    |    &quot;</span><span class="n">friend</span><span class="s">&quot; : {
-    |      &quot;</span><span class="n">name</span><span class="s">&quot; : &quot;</span><span class="n">tata</span><span class="s">&quot;,
-    |      &quot;</span><span class="n">age</span><span class="s">&quot; : 20,
-    |      &quot;</span><span class="n">email</span><span class="s">&quot; : &quot;</span><span class="n">tata</span><span class="nd">@coldmail</span><span class="o">.</span><span class="na">com</span><span class="s">&quot;
+  <span class="s">"""{
+    |  "</span><span class="n">user</span><span class="s">": {
+    |    "</span><span class="n">name</span><span class="s">" : "</span><span class="n">toto</span><span class="s">",
+    |    "</span><span class="n">age</span><span class="s">" : 25,
+    |    "</span><span class="n">email</span><span class="s">" : "</span><span class="n">toto</span><span class="nd">@jmail</span><span class="o">.</span><span class="na">com</span><span class="s">",
+    |    "</span><span class="n">isAlive</span><span class="s">" : true,
+    |    "</span><span class="n">friend</span><span class="s">" : {
+    |      "</span><span class="n">name</span><span class="s">" : "</span><span class="n">tata</span><span class="s">",
+    |      "</span><span class="n">age</span><span class="s">" : 20,
+    |      "</span><span class="n">email</span><span class="s">" : "</span><span class="n">tata</span><span class="nd">@coldmail</span><span class="o">.</span><span class="na">com</span><span class="s">"
     |    }
     |  }
     |}
-  &quot;&quot;&quot;</span><span class="o">.</span><span class="na">stripMargin</span>
+  """</span><span class="o">.</span><span class="na">stripMargin</span>
 
 <span class="n">val</span> <span class="nl">userResponse:</span> <span class="n">Option</span><span class="o">[</span><span class="n">UserResponse</span><span class="o">]</span> <span class="o">=</span> <span class="n">fromJSONString</span><span class="o">[</span><span class="n">UserResponse</span><span class="o">](</span><span class="n">jsonString</span><span class="o">)</span>
 

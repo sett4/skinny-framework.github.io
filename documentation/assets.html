@@ -78,10 +78,10 @@
 <img alt="React Logo" src="/images/react.png" /></p>
 
 <p>First, add <code>skinny-assets</code> to libraryDependencies.</p>
-<pre class="highlight text">libraryDependencies ++= Seq(
-  &quot;org.skinny-framework&quot; %% &quot;skinny-framework&quot; % &quot;[0.9,)&quot;,
-  &quot;org.skinny-framework&quot; %% &quot;skinny-assets&quot;    % &quot;[0.9,)&quot;,
-  &quot;org.skinny-framework&quot; %% &quot;skinny-test&quot;      % &quot;[0.9,)&quot; % &quot;test&quot;
+<pre class="highlight plaintext">libraryDependencies ++= Seq(
+  "org.skinny-framework" %% "skinny-framework" % "[0.9,)",
+  "org.skinny-framework" %% "skinny-assets"    % "[0.9,)",
+  "org.skinny-framework" %% "skinny-test"      % "[0.9,)" % "test"
 )
 </pre>
 <p>And then, add <code>AssetsController</code> to routes. Now you can easily use CoffeeScript, LESS and Sass.</p>
@@ -112,7 +112,7 @@ If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you do
 <p>Easy to start! Just put *.coffee files under <code>WEB-INF/assets/coffee</code>:</p>
 <pre class="highlight coffeescript"><span class="c1"># src/main/webapp/WEB-INF/assets/coffee/echo.coffee
 </span><span class="nx">echo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="na">log</span> <span class="nx">v</span>
-<span class="nx">echo</span> <span class="s">&quot;foo&quot;</span>
+<span class="nx">echo</span> <span class="s">"foo"</span>
 </pre>
 <p>You can access the latest compiled JavaScript code at <code>http://localhost:8080/assets/js/echo.js</code>.</p>
 
@@ -130,7 +130,7 @@ If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you do
 If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you don&rsquo;t need preparing LESS compiler in advance.</p>
 
 <p>Easy to start! Just put *.less files under <code>WEB-INF/assets/less</code>:</p>
-<pre class="highlight text">// src/main/webapp/WEB-INF/assets/less/box.less
+<pre class="highlight plaintext">// src/main/webapp/WEB-INF/assets/less/box.less
 @base: #f938ab;
 .box {
   color: saturate(@base, 5%);
@@ -182,7 +182,7 @@ If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you do
 /** @jsx React.DOM */
 React.renderComponent(
   <span class="nt">&lt;h1&gt;</span>Hello, world!<span class="nt">&lt;/h1&gt;</span>,
-  document.getElementById(&#39;example&#39;)
+  document.getElementById('example')
 );
 </pre>
 <p>You can access the latest transformed JS file at <code>http://localhost:8080/assets/js/react-example.js</code>.</p>
@@ -198,8 +198,8 @@ React.renderComponent(
 <p>AssetsController: <a href="https://github.com/skinny-framework/skinny-framework/blob/master/assets/src/main/scala/skinny/controller/AssetsController.scala">assets/src/main/scala/skinny/controller/AssetsController.scala</a></p>
 <pre class="highlight java"><span class="n">object</span> <span class="n">TypeScriptAssetCompiler</span> <span class="kd">extends</span> <span class="n">AssetCompiler</span> <span class="o">{</span>
   <span class="kd">private</span><span class="o">[</span><span class="k">this</span><span class="o">]</span> <span class="n">val</span> <span class="n">compiler</span> <span class="o">=</span> <span class="n">TypeScriptCompiler</span><span class="o">()</span>
-  <span class="n">def</span> <span class="n">dir</span><span class="o">(</span><span class="nl">basePath:</span> <span class="n">String</span><span class="o">)</span> <span class="o">=</span> <span class="n">s</span><span class="s">&quot;${basePath}/ts&quot;</span>
-  <span class="n">def</span> <span class="n">extension</span> <span class="o">=</span> <span class="s">&quot;ts&quot;</span>
+  <span class="n">def</span> <span class="n">dir</span><span class="o">(</span><span class="nl">basePath:</span> <span class="n">String</span><span class="o">)</span> <span class="o">=</span> <span class="n">s</span><span class="s">"${basePath}/ts"</span>
+  <span class="n">def</span> <span class="n">extension</span> <span class="o">=</span> <span class="s">"ts"</span>
   <span class="n">def</span> <span class="n">compile</span><span class="o">(</span><span class="nl">source:</span> <span class="n">String</span><span class="o">)</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">source</span><span class="o">)</span>
 <span class="o">}</span>
 
@@ -207,8 +207,8 @@ React.renderComponent(
   <span class="n">registerJsCompiler</span><span class="o">(</span><span class="n">TypeScriptAssetCompiler</span><span class="o">)</span>
 <span class="o">}</span>
 <span class="n">object</span> <span class="n">MyAssetsController</span> <span class="kd">extends</span> <span class="n">MyAssetsController</span> <span class="n">with</span> <span class="n">Routes</span> <span class="o">{</span>
-  <span class="n">get</span><span class="o">(</span><span class="n">s</span><span class="s">&quot;${jsRootPath}/*&quot;</span><span class="o">)(</span><span class="n">js</span><span class="o">).</span><span class="na">as</span><span class="o">(</span><span class="err">&#39;</span><span class="n">js</span><span class="o">)</span>
-  <span class="n">get</span><span class="o">(</span><span class="n">s</span><span class="s">&quot;${cssRootPath}/*&quot;</span><span class="o">)(</span><span class="n">css</span><span class="o">).</span><span class="na">as</span><span class="o">(</span><span class="err">&#39;</span><span class="n">css</span><span class="o">)</span>
+  <span class="n">get</span><span class="o">(</span><span class="n">s</span><span class="s">"${jsRootPath}/*"</span><span class="o">)(</span><span class="n">js</span><span class="o">).</span><span class="na">as</span><span class="o">(</span><span class="err">'</span><span class="n">js</span><span class="o">)</span>
+  <span class="n">get</span><span class="o">(</span><span class="n">s</span><span class="s">"${cssRootPath}/*"</span><span class="o">)(</span><span class="n">css</span><span class="o">).</span><span class="na">as</span><span class="o">(</span><span class="err">'</span><span class="n">css</span><span class="o">)</span>
 <span class="o">}</span>
 
 <span class="c1">// src/main/scala/ScalatraBootstrap.scala</span>

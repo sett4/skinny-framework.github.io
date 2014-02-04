@@ -78,11 +78,11 @@
 
 <p>You can use Scalatra&rsquo;s great test support. Some optional feature is provided by skinny-test library.</p>
 <pre class="highlight java"><span class="kd">class</span> <span class="nc">ControllerSpec</span> <span class="kd">extends</span> <span class="n">ScalatraFlatSpec</span> <span class="n">with</span> <span class="n">SkinnyTestSupport</span> <span class="o">{</span>
-  <span class="n">addFilter</span><span class="o">(</span><span class="n">MembersController</span><span class="o">,</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
+  <span class="n">addFilter</span><span class="o">(</span><span class="n">MembersController</span><span class="o">,</span> <span class="s">"/*"</span><span class="o">)</span>
 
-  <span class="n">it</span> <span class="n">should</span> <span class="s">&quot;show index page&quot;</span> <span class="n">in</span> <span class="o">{</span>
-    <span class="n">withSession</span><span class="o">(</span><span class="s">&quot;userId&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Alice&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">get</span><span class="o">(</span><span class="s">&quot;/members&quot;</span><span class="o">)</span> <span class="o">{</span> <span class="n">status</span> <span class="n">should</span> <span class="n">equal</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span> <span class="o">}</span>
+  <span class="n">it</span> <span class="n">should</span> <span class="s">"show index page"</span> <span class="n">in</span> <span class="o">{</span>
+    <span class="n">withSession</span><span class="o">(</span><span class="s">"userId"</span> <span class="o">-&gt;</span> <span class="s">"Alice"</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">get</span><span class="o">(</span><span class="s">"/members"</span><span class="o">)</span> <span class="o">{</span> <span class="n">status</span> <span class="n">should</span> <span class="n">equal</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span> <span class="o">}</span>
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
