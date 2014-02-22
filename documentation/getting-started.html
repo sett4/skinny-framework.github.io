@@ -98,6 +98,9 @@
 ./skinny db:migrate
 ./skinny run
 </pre>
+<p>FYI: It&rsquo;s also possible to specify column data type for each field. Legnth validation at MembersController should be modified by yourself.</p>
+<pre class="highlight shell">./skinny g scaffold members member <span class="s2">"name:String:varchar(128)"</span>
+</pre>
 <p>And then, access <code>http://localhost:8080/members</code>.</p>
 
 <p>You can run generated tests.</p>
@@ -170,9 +173,9 @@ yo skinny
 │   │       ├── WEB-INF
 │   │       │   ├── assets
 │   │       │   │   ├── coffee
-│   │       │   │   │   └── echo.coffee <span class="c"># converted JS at localhost:8080/assets/echo.js</span>
-│   │       │   │   └── less
-│   │       │   │       └── box.less    <span class="c"># converted CSS at localhost:8080/assets/box.css</span>
+│   │       │   │   jsx
+│   │       │   │   less
+│   │       │   │   scss
 │   │       │   ├── layouts
 │   │       │   │   └── default.jade <span class="c"># layout file (ssp, scaml and mustache are also OK)</span>
 │   │       │   ├── views
@@ -197,8 +200,6 @@ yo skinny
 │   │       │   └── web.xml
 │   │       └── assets
 │   │           └── js
-│   │               ├── jquery-2.0.3.min.js
-│   │               └── jquery-2.0.3.min.map
 │   └── <span class="nb">test</span>
 │       ├── resources
 │       │   ├── factories.conf <span class="c"># FactoryGirl's configuration</span>

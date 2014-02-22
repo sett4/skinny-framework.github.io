@@ -93,6 +93,11 @@
 
 <p>Be aware of required two underscores at filename.</p>
 
+<p>When your migration file is invalid and migration failed, you must do <code>db:repair</code> in front of retying.</p>
+<pre class="highlight plaintext">./skinny db:repair [env] [dbname]
+# fix your invalid migration file
+./skinny db:migrate [env] [dbname]
+</pre>
 <hr/>
 
 <h3 id="toc_3">Customizing Migration</h3>
@@ -142,6 +147,14 @@
 <pre class="highlight plaintext">./skinny g scaffold:jade members member name:String birthday:LocalDate
 </pre><pre class="highlight plaintext">./skinny db:migrate
 ./skinny db:migrate test
+</pre>
+<p>When your migration failed, Run <code>db:repair</code> command and fix migration files.</p>
+<pre class="highlight plaintext">./skinny db:repair
+
+// fix migration files...
+
+// retry!
+./skinny db:migrate
 </pre>
             <hr/>
             <div class="alert alert-info small"> 

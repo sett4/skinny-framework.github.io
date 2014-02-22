@@ -89,6 +89,21 @@
 </pre>
 <hr/>
 
+<h3 id="toc_2">How to run tests</h3>
+
+<p>Simply use skinny command or sbt directly.</p>
+<pre class="highlight plaintext">./skinny test
+./skinny test-only models.MemberSpec
+</pre>
+<p>If you need code coverage report, use <code>scoverage:test</code> instead. </p>
+
+<p><a href="https://github.com/scoverage/sbt-scoverage">https://github.com/scoverage/sbt-scoverage</a></p>
+<pre class="highlight plaintext">./skinny scoverage:test
+</pre>
+<p>WARNING: There is a known issue that scoverage doesn&rsquo;t work fine with Skinny ORM.</p>
+
+<hr/>
+
 <p>You can see some examples here:</p>
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/tree/master/example/src/test/scala">example/src/test/scala</a></p>
