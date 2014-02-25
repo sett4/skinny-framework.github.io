@@ -76,7 +76,7 @@
 
 <hr/>
 
-<p>DB migration comes with <a href="http://flywaydb.org/">Flyway</a>.</p>
+<p>DB migration is provided by <a href="http://flywaydb.org/">Flyway</a>.</p>
 
 <p><img alt="Flyway Logo" src="/images/flyway.png" /></p>
 
@@ -91,9 +91,9 @@
 </pre>
 <p>This command expects <code>src/main/resources/db/migration/V***__***.sql</code> files. </p>
 
-<p>Be aware of required two underscores at filename.</p>
+<p>Note the double underscore in the filename.</p>
 
-<p>When your migration file is invalid and migration failed, you must do <code>db:repair</code> in front of retying.</p>
+<p>When your migration file is invalid and migration failed, you must do <code>db:repair</code> before retrying the migration.</p>
 <pre class="highlight plaintext">./skinny db:repair [env] [dbname]
 # fix your invalid migration file
 ./skinny db:migrate [env] [dbname]
@@ -119,7 +119,7 @@
   }
 }
 </pre>
-<p>Yet anothe DB&rsquo;s migration example:</p>
+<p>Yet another DB migration example:</p>
 <pre class="highlight plaintext">development {
   db {
     yetanother {
@@ -143,7 +143,7 @@
 
 <hr/>
 
-<p>Scaffolding generates migration SQL file. Try it with <a href="https://github.com/skinny-framework/skinny-framework/releases">skinny-blank-app.zip</a>!</p>
+<p>Scaffolding generates a migration SQL file. Try it with <a href="https://github.com/skinny-framework/skinny-framework/releases">skinny-blank-app.zip</a>!</p>
 <pre class="highlight plaintext">./skinny g scaffold:jade members member name:String birthday:LocalDate
 </pre><pre class="highlight plaintext">./skinny db:migrate
 ./skinny db:migrate test
@@ -158,7 +158,7 @@
 </pre>
             <hr/>
             <div class="alert alert-info small"> 
-              If this webpage has typo or something wrong, Please report or fix. <a href="/contribution.html">How?</a>
+              If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
             </div> 
 <a href="https://twitter.com/SkinnyFramework" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @SkinnyFramework</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

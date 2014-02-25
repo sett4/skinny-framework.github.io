@@ -72,7 +72,7 @@
 
 <hr/>
 
-<h3 id="toc_1">Quite Readable and Customizable DSL</h3>
+<h3 id="toc_1">Readable and Customizable DSL</h3>
 
 <hr/>
 
@@ -97,7 +97,7 @@
 
 <p>That&rsquo;s all.</p>
 
-<p>The following is an example from built-in validations.</p>
+<p>The following is an example from the built-in validations.</p>
 <pre class="highlight java"><span class="kn">import</span> <span class="nn">skinny.validator._</span>
 
 <span class="n">object</span> <span class="n">required</span> <span class="kd">extends</span> <span class="nf">required</span><span class="p">(</span><span class="kc">true</span><span class="o">)</span>
@@ -121,7 +121,7 @@
 <span class="n">error</span><span class="o">.</span><span class="na">name</span> <span class="c1">// -&gt; "required"</span>
 <span class="n">error</span><span class="o">.</span><span class="na">messageParmas</span> <span class="c1">// -&gt; List("name")</span>
 </pre>
-<p>Validation rule which accepts value when using such as <code>minLength(6)</code> is like this:</p>
+<p>A validation rule which accepts value when using such as <code>minLength(6)</code> is like this:</p>
 <pre class="highlight java"><span class="k">case</span> <span class="kd">class</span> <span class="nf">minLength</span><span class="p">(</span><span class="nl">min:</span> <span class="n">Int</span><span class="o">)</span> <span class="kd">extends</span> <span class="n">ValidationRule</span> <span class="o">{</span>
   <span class="n">def</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"minLength"</span>
   <span class="n">override</span> <span class="n">def</span> <span class="n">messageParams</span> <span class="o">=</span> <span class="n">Seq</span><span class="o">(</span><span class="n">min</span><span class="o">.</span><span class="na">toString</span><span class="o">)</span>
@@ -136,7 +136,7 @@
   <span class="n">param</span><span class="o">(</span><span class="s">"password"</span> <span class="o">-&gt;</span> <span class="s">"xxxx"</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">minLength</span><span class="o">(</span><span class="mi">6</span><span class="o">)</span>
 <span class="o">)</span>
 </pre>
-<p>Basic usage is combining validation rules with <code>&amp;</code>. If a failure is found, rest of them will be skipped. <code>checkAll</code> executes all the validations even if some of them already failed.</p>
+<p>Basic usage involves combining validation rules with <code>&amp;</code>. If a failure is found, by default the rest of the validation rules will be skipped. <code>checkAll</code> executes all the validations even if some of them already failed.</p>
 
 <hr/>
 
@@ -144,7 +144,7 @@
 
 <hr/>
 
-<p>In most of cases, built-in validators are useful.</p>
+<p>The built-in validators are good enough to cover most common cases.</p>
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala">validator/src/main/scala/skinny/validator/BuiltinValidationRules.scala</a></p>
 
@@ -185,7 +185,7 @@
   minLength="{0} length must be greater than or equal to {1}"
 }
 </pre>
-<p>Now <code>Messages</code> can load error messages for validation errors named &ldquo;required&rdquo; or &ldquo;minLength&rdquo;. Name comes from <code>ValidationRule#name</code>.</p>
+<p>Now <code>Messages</code> can load error messages for validation errors named &ldquo;required&rdquo; or &ldquo;minLength&rdquo;. The name comes from <code>ValidationRule#name</code>.</p>
 <pre class="highlight java"><span class="n">val</span> <span class="n">messages</span> <span class="o">=</span> <span class="n">Messages</span><span class="o">.</span><span class="na">loadFromConfig</span><span class="o">()</span>
 <span class="c1">// val messages = Messages.loadFromConfig("messages2") // loads messages2.conf</span>
 <span class="c1">// val messages = Messages.loadFromProperties() // loads messages.properties</span>
@@ -242,7 +242,7 @@
 
             <hr/>
             <div class="alert alert-info small"> 
-              If this webpage has typo or something wrong, Please report or fix. <a href="/contribution.html">How?</a>
+              If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
             </div> 
 <a href="https://twitter.com/SkinnyFramework" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @SkinnyFramework</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

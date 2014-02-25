@@ -80,7 +80,7 @@
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/task/src/main/scala/skinny/task/TaskLauncher.scala">task/src/main/scala/skinny/task/TaskLauncher.scala</a></p>
 
-<p>skinny-blank-app prepares easy-to-use TaksRunner.</p>
+<p>skinny-blank-app prepares the easy-to-use <code>TaskRunner</code>.</p>
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/yeoman-generator-skinny/app/templates/task/src/main/scala/TaskRunner.scala">task/src/main/scala/TaskRunner.scala</a></p>
 <pre class="highlight java"><span class="n">object</span> <span class="n">TaskRunner</span> <span class="kd">extends</span> <span class="n">skinny</span><span class="o">.</span><span class="na">task</span><span class="o">.</span><span class="na">TaskLauncher</span> <span class="o">{</span>
@@ -98,7 +98,7 @@
 
 <hr/>
 
-<p>Creating tasks is pretty easy. It&rsquo;s just defining a function <code>(List[String]) =&gt; Unit</code>.</p>
+<p>Creating tasks is pretty easy. You just need to define a function <code>(List[String]) =&gt; Unit</code>.</p>
 <pre class="highlight java"><span class="n">register</span><span class="o">(</span><span class="s">"echo"</span><span class="o">,</span> <span class="o">(</span><span class="n">params</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">params</span> <span class="n">foreach</span> <span class="n">println</span><span class="o">)</span>
 </pre>
 <p>Run the task:</p>
@@ -111,11 +111,11 @@ baz
 </pre>
 <p>Improve your development with tasks.</p>
 
-<p>If you have good idea, please write a blog post or give us some feedback.</p>
+<p>If you have any good ideas for how to use tasks or improve the API, please write a blog post or give us some feedback.</p>
 
             <hr/>
             <div class="alert alert-info small"> 
-              If this webpage has typo or something wrong, Please report or fix. <a href="/contribution.html">How?</a>
+              If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
             </div> 
 <a href="https://twitter.com/SkinnyFramework" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @SkinnyFramework</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

@@ -76,9 +76,9 @@
 
 <hr/>
 
-<p>Skinny applications runs on any Serlvet containers. </p>
+<p>Skinny applications run on any Serlvet container. </p>
 
-<p>So what you need to do is just creating war file and deploying it to your production servers.</p>
+<p>So you just need to build a war file and deploy it to your production servers.</p>
 
 <hr/>
 
@@ -86,12 +86,12 @@
 
 <hr/>
 
-<p>It&rsquo;s utmost simple to do that. Just </p>
+<p>It&rsquo;s very simple to do that. Just </p>
 <pre class="highlight plaintext">./skinny package
 </pre>
-<p>You will see created war file under <code>build/target/scala_2.10</code>.</p>
+<p>You will see the created war file under <code>build/target/scala_2.10</code>.</p>
 
-<p>If you deploy war file to maven repository (e.g. Artifactory), just <code>./skinny publish</code> after configuring build settings (default settings doesn&rsquo;t work for you).</p>
+<p>If you want to deploy the war file to a Maven repository (e.g. Artifactory), just run <code>./skinny publish</code> after customizing the build settings file.</p>
 
 <hr/>
 
@@ -99,10 +99,10 @@
 
 <hr/>
 
-<p>What&rsquo;s more, you can easily create stand alone jar file by just run the following command: </p>
+<p>What&rsquo;s more, you can easily create a stand alone jar file by just running the following command: </p>
 <pre class="highlight plaintext">./skinny package:standalone
 </pre>
-<p>After a while, you will get standalone jar file. </p>
+<p>After a while, you will get a standalone jar file. </p>
 <pre class="highlight plaintext">java -jar standalone-build/target/scala-2.10/skinny-standalone-app-assembly-0.1.0-SNAPSHOT.jar
 </pre>
 <p>You can pass configuration via system properties. Otherwise, it&rsquo;s also possible to use environment variables.</p>
@@ -115,7 +115,7 @@
 
 <hr/>
 
-<p>Options to configure your Skinny applications. You can pass the following values from environment variables or system properties.</p>
+<p>The following options are available to configure your Skinny applications. You can pass the following values from environment variables or system properties.</p>
 
 <hr/>
 
@@ -129,15 +129,15 @@
 
 <hr/>
 
-<h4 id="toc_6">skinny.port</h4>
+<h4 id="toc_6">skinny.port or SKINNY_PORT</h4>
 
 <hr/>
 
-<p>This value is only for stand alone apps. Default value is 8080. You can customize the port number stand alone app server listens.</p>
+<p>This value is only for stand alone apps. Default value is 8080. You can customize the port number on which the stand alone app server listens.</p>
 
             <hr/>
             <div class="alert alert-info small"> 
-              If this webpage has typo or something wrong, Please report or fix. <a href="/contribution.html">How?</a>
+              If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
             </div> 
 <a href="https://twitter.com/SkinnyFramework" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @SkinnyFramework</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

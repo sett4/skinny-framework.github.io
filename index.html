@@ -74,7 +74,7 @@
 
 <hr/>
 
-<p>Skinny is a full-stack web app framework, which is built on <a href="http://scalatra.org">Scalatra</a> and additional components are integrated.</p>
+<p>Skinny is a full-stack web app framework built on <a href="http://scalatra.org">Scalatra</a>.</p>
 
 <p>To put it simply, Skinny framework&rsquo;s concept is <strong>Scala on Rails</strong>. Skinny is highly inspired by <a href="http://rubyonrails.org/">Ruby on Rails</a> and it is optimized for sustainable productivity for ordinary Servlet-based app development.</p>
 
@@ -84,19 +84,19 @@
 
 <hr/>
 
-<p>What does the name of <code>Skinny</code> actually mean? We have three reasons as follows.</p>
+<p>What does the name <code>Skinny</code> actually mean? We have three reasons as follows.</p>
 
 <h4 id="toc_2">Application should be skinny</h4>
 
-<p>All the parts of web application - controllers, models, views, routings and other settings - should be skinny. If you use Skinny framework, you don&rsquo;t need to have non-essential code anymore. For instance, when you create a simple registration form, all you need to do is just defining parameters and validation rules and creating view templates in an efficient way (ssp, scaml, jade, FreeMarker or something else) in most cases.</p>
+<p>All the parts of a web application - controllers, models, views, routings and other settings - should be skinny. If you use Skinny framework, you can do without a lot of non-essential boilerplate code. For instance, when you create a simple registration form, all you need to do is define the parameters and validation rules and create view templates in an efficient way (ssp, scaml, jade, FreeMarker or something else) in most cases.</p>
 
 <h4 id="toc_3">Framework should be skinny</h4>
 
-<p>Even if you need to investigate Skinny&rsquo;s inside, don&rsquo;t worry. Skinny keeps itself skinny, too. I believe that if the framework is well-designed, eventually the implementation is skinny. </p>
+<p>Even if you need to investigate Skinny&rsquo;s internals, don&rsquo;t worry. Skinny keeps itself skinny, too. We believe that if the framework is well-designed, the resulting implementation will be skinny. </p>
 
 <h4 id="toc_4">&ldquo;su-ki-ni&rdquo; in Japanese means &ldquo;as you like it&rdquo;</h4>
 
-<p>A sound-alike word <strong>&ldquo;好きに (su-ki-ni)&rdquo;</strong> in Japanese means <strong>&ldquo;as you like it&rdquo;</strong>. This is only half kidding but it also represents Skinny&rsquo;s concept. Skinny framework should provide flexible APIs to empower developers as much as possible and shouldn&rsquo;t bother them.</p>
+<p>A sound-alike word <strong>&ldquo;好きに (su-ki-ni)&rdquo;</strong> in Japanese means <strong>&ldquo;as you like it&rdquo;</strong>. This is only half kidding but it also represents Skinny&rsquo;s concept. Skinny framework should provide flexible APIs to empower developers as much as possible and shouldn&rsquo;t get in the way.</p>
 
 <hr/>
 
@@ -108,23 +108,23 @@
 
 <p>If you&rsquo;re a Windows user, don&rsquo;t worry. Use skinny.bat on cmd.exe instead.</p>
 
-<p><a href="https://github.com/skinny-framework/skinny-framework/releases/download/1.0.0-RC1/skinny-blank-app.zip"><img alt="Download" src="/images/blank-app-download.png" /></a></p>
+<p><a href="https://github.com/skinny-framework/skinny-framework/releases/download/1.0.0-RC2/skinny-blank-app.zip"><img alt="Download" src="/images/blank-app-download.png" /></a></p>
 
-<p>Let&rsquo;s create your first Skinny app by using scaffold generator.</p>
+<p>Let&rsquo;s create our first Skinny app by using the scaffold generator.</p>
 <pre class="highlight shell">./skinny g scaffold members member name:String activated:Boolean luckyNumber:Option[Long] birthday:Option[LocalDate]
 ./skinny db:migrate
 ./skinny run
 </pre>
 <p>And then, access <code>http://localhost:8080/members</code>.</p>
 
-<p>You can run generated tests.</p>
+<p>You can also run the generated tests.</p>
 <pre class="highlight plaintext">./skinny db:migrate test
 ./skinny test
 </pre>
-<p>Let&rsquo;s create war file to deploy.</p>
+<p>Now let&rsquo;s create a war file for deployment to a Servlet container.</p>
 <pre class="highlight shell">./skinny package
 </pre>
-<p>or it&rsquo;s possible to portable runnable jar file (with embedded Jetty server).</p>
+<p>It&rsquo;s also possible to build a standalone runnable jar file (with embedded Jetty server).</p>
 <pre class="highlight shell">./skinny package:standalone
 </pre>
 <hr/>
@@ -152,22 +152,22 @@ yo skinny
 
 <hr/>
 
-<p>Actually, application built with Skinny framework is a Scalatra application.</p>
+<p>Actually, an application built with Skinny framework is a normal Scalatra application.</p>
 
-<p>After preparing Scalatra app, just add the following dependency to your <code>project/Build.scala</code>.</p>
+<p>After preparing the Scalatra app, just add the following dependency to your <code>project/Build.scala</code>.</p>
 <pre class="highlight plaintext">libraryDependencies ++= Seq(
-  "org.skinny-framework" %% "skinny-assets"    % "1.0.0-RC1",
-  "org.skinny-framework" %% "skinny-framework" % "1.0.0-RC1",
-  "org.skinny-framework" %% "skinny-task"      % "1.0.0-RC1",
-  "org.skinny-framework" %% "skinny-test"      % "1.0.0-RC1" % "test"
+  "org.skinny-framework" %% "skinny-assets"    % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-framework" % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-task"      % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-test"      % "1.0.0-RC2" % "test"
 )
 </pre>
-<p>If you need only Skinny-ORM or Skinny-Validator, you can use only what you need. Even if you&rsquo;re a Play2 (or any others) user, these components are available for you as well.</p>
+<p>If you need only Skinny-ORM or Skinny-Validator, you can use only what you need. Even if you&rsquo;re using Play2 (or any other framework), these components are available for you as well.</p>
 <pre class="highlight plaintext">libraryDependencies ++= Seq(
-  "org.skinny-framework" %% "skinny-orm"        % "1.0.0-RC1",
-  "org.skinny-framework" %% "skinny-mailer"     % "1.0.0-RC1",
-  "org.skinny-framework" %% "skinny-standalone" % "1.0.0-RC1",
-  "org.skinny-framework" %% "skinny-validator"  % "1.0.0-RC1"
+  "org.skinny-framework" %% "skinny-orm"        % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-mailer"     % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-standalone" % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-validator"  % "1.0.0-RC2"
 )
 </pre>
 <hr/>
@@ -180,11 +180,11 @@ yo skinny
 
 <hr/>
 
-<p>Skinny&rsquo;s routing mechanism and controller layer on MVC architecture is a <strong>rich Scalatra</strong>. Skinny&rsquo;s extension provides you much simpler/rich syntax. Of course, if you need to use Scalatra&rsquo;s API directly, Skinny never bothers you.</p>
+<p>Skinny&rsquo;s routing mechanism and controller layer on MVC architecture can be thought of as a <strong>rich Scalatra</strong>. Skinny&rsquo;s extension provides you much simpler/rich syntax. Of course, if you need to use Scalatra&rsquo;s API directly, Skinny never bothers you.</p>
 
 <p><img alt="Scalatra" src="/images/scalatra.png" /></p>
 
-<p><code>SkinnyController</code> is a trait which extends <code>ScalatraFilter</code> and out-of-the-box components are integrated. </p>
+<p><code>SkinnyController</code> is a trait which extends <code>ScalatraFilter</code> and includes various useful components out-of-the-box. </p>
 <pre class="highlight java"><span class="c1">// src/main/scala/controller/MembersController.scala</span>
 <span class="kd">class</span> <span class="nc">MembersController</span> <span class="kd">extends</span> <span class="n">SkinnyController</span> <span class="o">{</span>
   <span class="n">def</span> <span class="n">index</span> <span class="o">=</span> <span class="o">{</span>
@@ -205,7 +205,7 @@ yo skinny
   <span class="o">}</span>
 <span class="o">}</span>
 </pre>
-<p><code>SkinnyResource</code> which is similar to Rails ActiveResource is available. That&rsquo;s a pretty DRY way.</p>
+<p><code>SkinnyResource</code>, which is similar to Rails ActiveResource, is also available. It&rsquo;s a pretty DRY way to define RESTful resources.</p>
 <pre class="highlight java"><span class="n">object</span> <span class="n">CompaniesController</span> <span class="kd">extends</span> <span class="n">SkinnyResource</span> <span class="o">{</span>
   <span class="n">protectFromForgery</span><span class="o">()</span>
 
@@ -230,7 +230,7 @@ yo skinny
 
 <p><img alt="Logo" src="/images/scalikejdbc.png" /></p>
 
-<p>Skinny-ORM is much powerful, so you don&rsquo;t need to write much code. Your first model class and companion are here.</p>
+<p>Skinny-ORM does a lot of work under the hood, so you don&rsquo;t need to write much code. Your first model class and companion are here.</p>
 <pre class="highlight java"><span class="k">case</span> <span class="kd">class</span> <span class="nf">Member</span><span class="p">(</span><span class="nl">id:</span> <span class="n">Long</span><span class="o">,</span> <span class="nl">name:</span> <span class="n">String</span><span class="o">,</span> <span class="nl">createdAt:</span> <span class="n">DateTime</span><span class="o">)</span>
 
 <span class="n">object</span> <span class="n">Member</span> <span class="kd">extends</span> <span class="n">SkinnyCRUDMapper</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span> <span class="o">{</span>
@@ -271,7 +271,7 @@ yo skinny
 
 <hr/>
 
-<p>DB migration comes with <a href="http://flywaydb.org/">Flyway</a>. Usage is pretty simple.</p>
+<p>DB migration is provided by <a href="http://flywaydb.org/">Flyway</a>. Usage is pretty simple.</p>
 
 <p><img alt="Flyway Logo" src="/images/flyway.png" /></p>
 <pre class="highlight shell">./skinny db:migrate <span class="o">[</span>env]
@@ -290,9 +290,9 @@ yo skinny
 
 <p><img alt="Scalate Logo" src="/images/scalate.png" /></p>
 
-<p>Templates&#39; path should be <code>{path}.{format}.{extension}</code>. Expected {format} are <code>html</code>, <code>json</code>, <code>js</code> and <code>xml</code>.</p>
+<p>Template paths should be of the form <code>{path}.{format}.{extension}</code>. Expected {format} are <code>html</code>, <code>json</code>, <code>js</code> and <code>xml</code>.</p>
 
-<p>For instance, your controller code will be like this:</p>
+<p>For instance, assuming your controller code looks like this:</p>
 <pre class="highlight java"><span class="kd">class</span> <span class="nc">MembersController</span> <span class="kd">extends</span> <span class="n">SkinnyController</span> <span class="o">{</span>
   <span class="n">def</span> <span class="n">index</span> <span class="o">=</span> <span class="o">{</span>
     <span class="n">set</span><span class="o">(</span><span class="s">"members"</span><span class="o">,</span> <span class="n">Member</span><span class="o">.</span><span class="na">findAll</span><span class="o">())</span>
@@ -301,18 +301,13 @@ yo skinny
 <span class="o">}</span>
 </pre>
 <p>The render method expects that <code>src/main/webapp/WEB-INF/views/members/index.html.ssp</code> exists.</p>
-<pre class="highlight plaintext">&lt;%@val members: Seq[model.Member] %&gt;
+<pre class="highlight plaintext">&lt;%=@val members: Seq[model.Member] %&gt;
 &lt;hr/&gt;
 #for (member &lt;- members)
   ${member.name}
 #end
 </pre>
-<p>Scalate supports many template engines. If you&rsquo;d like to use other Scalate templates, just override the settings in controllers.</p>
-<pre class="highlight java"><span class="kd">class</span> <span class="nc">MembersController</span> <span class="kd">extends</span> <span class="n">SkinnyController</span> <span class="o">{</span>
-  <span class="n">override</span> <span class="n">val</span> <span class="n">scalateExtension</span> <span class="o">=</span> <span class="s">"jade"</span>
-<span class="o">}</span>
-</pre>
-<p>And then, use <code>src/main/webapp/WEB-INF/views/members/index.html.jade</code> instead.</p>
+<p>Scalate supports many template engines. For example, if you want to write your template using Jade, save it as <code>src/main/webapp/WEB-INF/views/members/index.html.jade</code> instead.</p>
 
 <p>See in detail: <a href="/documentation/view-templates.html">View Templates</a></p>
 
@@ -336,7 +331,7 @@ yo skinny
   <span class="o">.</span><span class="na">body</span> <span class="o">{</span>
     <span class="s">"""Hi all,
     |
-    |We're very proud to announce that Sinny Framework version 1.0.0 is relaesed.
+    |We're very proud to announce that Skinny Framework version 1.0.0 is relaesed.
     |
     |.....
     |
@@ -360,9 +355,9 @@ yo skinny
 
 <p>First, add <code>skinny-assets</code> to libraryDependencies.</p>
 <pre class="highlight plaintext">libraryDependencies ++= Seq(
-  "org.skinny-framework" %% "skinny-framework" % "1.0.0-RC1",
-  "org.skinny-framework" %% "skinny-assets"    % "1.0.0-RC1",
-  "org.skinny-framework" %% "skinny-test"      % "1.0.0-RC1" % "test"
+  "org.skinny-framework" %% "skinny-framework" % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-assets"    % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-test"      % "1.0.0-RC2" % "test"
 )
 </pre>
 <p>And then, add <code>AssetsController</code> to routes. Now you can easily use CoffeeScript, LESS and Sass.</p>
@@ -375,7 +370,7 @@ yo skinny
 </pre>
 <p>AssetsController supports Last-Modified header and returns status 304 correctly if the requested file isn&rsquo;t changed. </p>
 
-<p>However, precompiling them is highly recommended in production (./skinny package does that).</p>
+<p>However, precompiling the assets is highly recommended in production (<code>./skinny package</code> does that).</p>
 
 <p>See in detail: <a href="/documentation/assets.html">Assets Support</a></p>
 
@@ -385,13 +380,13 @@ yo skinny
 
 <hr/>
 
-<p>You can use Scalatra&rsquo;s great test support. Some optional feature is provided by skinny-test library.</p>
+<p>You can use Scalatra&rsquo;s great test support. Some extra optional features are provided by the skinny-test library.</p>
 <pre class="highlight java"><span class="kd">class</span> <span class="nc">ControllerSpec</span> <span class="kd">extends</span> <span class="n">ScalatraFlatSpec</span> <span class="n">with</span> <span class="n">SkinnyTestSupport</span> <span class="o">{</span>
   <span class="n">addFilter</span><span class="o">(</span><span class="n">MembersController</span><span class="o">,</span> <span class="s">"/*"</span><span class="o">)</span>
 
   <span class="n">it</span> <span class="n">should</span> <span class="s">"show index page"</span> <span class="n">in</span> <span class="o">{</span>
     <span class="n">withSession</span><span class="o">(</span><span class="s">"userId"</span> <span class="o">-&gt;</span> <span class="s">"Alice"</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">i</span>  <span class="n">get</span><span class="o">(</span><span class="s">"/members"</span><span class="o">)</span> <span class="o">{</span> <span class="n">status</span> <span class="n">should</span> <span class="n">equal</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span> <span class="o">}</span>
+      <span class="n">get</span><span class="o">(</span><span class="s">"/members"</span><span class="o">)</span> <span class="o">{</span> <span class="n">status</span> <span class="n">should</span> <span class="n">equal</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span> <span class="o">}</span>
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
@@ -412,7 +407,7 @@ yo skinny
 
 <span class="n">val</span> <span class="n">company1</span> <span class="o">=</span> <span class="n">FactoryGirl</span><span class="o">(</span><span class="n">Company</span><span class="o">).</span><span class="na">create</span><span class="o">()</span>
 </pre>
-<p>Settings is not in yaml files but typesafe-config conf file. In this example, <code>src/test/resources/factories.conf</code> is like this:</p>
+<p>Configuration is not in yaml files but a typesafe-config conf file. In this example, <code>src/test/resources/factories.conf</code> looks like this:</p>
 <pre class="highlight plaintext">company {
   name="FactoryGirl, Inc."
 }
@@ -431,7 +426,7 @@ yo skinny
 
             <hr/>
             <div class="alert alert-info small"> 
-              If this webpage has typo or something wrong, Please report or fix. <a href="/contribution.html">How?</a>
+              If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
             </div> 
 <a href="https://twitter.com/SkinnyFramework" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @SkinnyFramework</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

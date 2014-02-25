@@ -79,9 +79,9 @@
 
 <p>First, add <code>skinny-assets</code> to libraryDependencies.</p>
 <pre class="highlight plaintext">libraryDependencies ++= Seq(
-  "org.skinny-framework" %% "skinny-framework" % "[0.9,)",
-  "org.skinny-framework" %% "skinny-assets"    % "[0.9,)",
-  "org.skinny-framework" %% "skinny-test"      % "[0.9,)" % "test"
+  "org.skinny-framework" %% "skinny-framework" % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-assets"    % "1.0.0-RC2",
+  "org.skinny-framework" %% "skinny-test"      % "1.0.0-RC2" % "test"
 )
 </pre>
 <p>And then, add <code>AssetsController</code> to routes. Now you can easily use CoffeeScript, LESS and Sass.</p>
@@ -94,7 +94,7 @@
 </pre>
 <p>AssetsController supports Last-Modified header and returns status 304 correctly if the requested file isn&rsquo;t changed.</p>
 
-<p>However, precompiling them is highly recommended in production (./skinny package does that).</p>
+<p>However, precompiling them is highly recommended in production (<code>./skinny package</code> does that).</p>
 
 <hr/>
 
@@ -106,8 +106,8 @@
 
 <p><a href="http://coffeescript.org/">http://coffeescript.org/</a></p>
 
-<p>Skinny tries to find native compiler (npm install -g coffee-script) at first.
-If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you don&rsquo;t need preparing CoffeeScript compiler in advance.</p>
+<p>Skinny tries to find the native compiler (<code>npm install -g coffee-script</code>) at first.
+If it&rsquo;s absent, Skinny uses its own compiler on the Rhino JS engine. So you don&rsquo;t need to prepare a CoffeeScript compiler in advance.</p>
 
 <p>Easy to start! Just put *.coffee files under <code>WEB-INF/assets/coffee</code>:</p>
 <pre class="highlight coffeescript"><span class="c1"># src/main/webapp/WEB-INF/assets/coffee/echo.coffee
@@ -126,8 +126,8 @@ If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you do
 
 <p><a href="http://lesscss.org/">http://lesscss.org/</a></p>
 
-<p>Skinny tries to find native compiler (npm install -g less) at first.
-If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you don&rsquo;t need preparing LESS compiler in advance.</p>
+<p>Skinny tries to find the native compiler (<code>npm install -g less</code>) at first.
+If it&rsquo;s absent, Skinny uses its own compiler on the Rhino JS engine. So you don&rsquo;t need to prepare a LESS compiler in advance.</p>
 
 <p>Easy to start! Just put *.less files under <code>WEB-INF/assets/less</code>:</p>
 <pre class="highlight plaintext">// src/main/webapp/WEB-INF/assets/less/box.less
@@ -149,7 +149,7 @@ If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you do
 
 <p><a href="http://sass-lang.com/">http://sass-lang.com/</a></p>
 
-<p>Sass is implemented by Ruby and it works on the Ruby runtime. You need preparing Ruby runtime and Sass native compiler in advance.</p>
+<p>Sass is implemented in Ruby and it works on the Ruby runtime. You will need to prepare a Ruby runtime and Sass native compiler in advance.</p>
 
 <p>And then, just put *.scss files under <code>WEB-INF/assets/scss</code> or <code>WEB-INF/assets/sass</code>.</p>
 
@@ -174,8 +174,8 @@ If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you do
 
 <p><a href="http://facebook.github.io/react/">http://facebook.github.io/react/</a></p>
 
-<p>Skinny tries to find native compiler (npm install -g react-tools) at first.
-If it&rsquo;s absent, Skinny uses own compiler on the Rhino JS engine. So you don&rsquo;t need preparing JSX compiler in advance.</p>
+<p>Skinny tries to find the native compiler (<code>npm install -g react-tools</code>) at first.
+If it&rsquo;s absent, Skinny uses its own compiler on the Rhino JS engine. So you don&rsquo;t need to prepare a JSX compiler in advance.</p>
 
 <p>Easy to start! Just put *.jsx files under <code>WEB-INF/assets/jsx</code>:</p>
 <pre class="highlight xml">// src/main/webapp/WEB-INF/assets/jsx/react-example.jsx
@@ -193,7 +193,7 @@ React.renderComponent(
 
 <hr/>
 
-<p>If you need other script support, you can add compiler to AssetsController.</p>
+<p>If you need other script support, you can add compilers to AssetsController.</p>
 
 <p>AssetsController: <a href="https://github.com/skinny-framework/skinny-framework/blob/master/assets/src/main/scala/skinny/controller/AssetsController.scala">assets/src/main/scala/skinny/controller/AssetsController.scala</a></p>
 <pre class="highlight java"><span class="n">object</span> <span class="n">TypeScriptAssetCompiler</span> <span class="kd">extends</span> <span class="n">AssetCompiler</span> <span class="o">{</span>
@@ -220,7 +220,7 @@ React.renderComponent(
 </pre>
             <hr/>
             <div class="alert alert-info small"> 
-              If this webpage has typo or something wrong, Please report or fix. <a href="/contribution.html">How?</a>
+              If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
             </div> 
 <a href="https://twitter.com/SkinnyFramework" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @SkinnyFramework</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

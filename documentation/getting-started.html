@@ -85,7 +85,7 @@
 <p>If you&rsquo;re a Windows user, don&rsquo;t worry. Use skinny.bat on cmd.exe instead.</p>
 <pre class="highlight shell">./skinny run
 </pre>
-<p>And then, access <code>http://localhost:8080/</code> and app should return 200 OK.</p>
+<p>And then, access <code>http://localhost:8080/</code> and the app should return 200 OK.</p>
 
 <hr/>
 
@@ -93,26 +93,26 @@
 
 <hr/>
 
-<p>Let&rsquo;s create your first Skinny app by using scaffold generator.</p>
+<p>Let&rsquo;s create our first Skinny app by using the scaffold generator.</p>
 <pre class="highlight shell">./skinny g scaffold members member name:String activated:Boolean luckyNumber:Option[Long] birthday:Option[LocalDate]
 ./skinny db:migrate
 ./skinny run
 </pre>
-<p>FYI: It&rsquo;s also possible to specify column data type for each field. Legnth validation at MembersController should be modified by yourself.</p>
+<p>FYI: It&rsquo;s also possible to specify the column data type for each field. However you will need to add the length validation code to MembersController yourself.</p>
 <pre class="highlight shell">./skinny g scaffold members member <span class="s2">"name:String:varchar(128)"</span>
 </pre>
 <p>And then, access <code>http://localhost:8080/members</code>.</p>
 
-<p>You can run generated tests.</p>
+<p>You can also run the generated tests.</p>
 <pre class="highlight plaintext">./skinny db:migrate test
 ./skinny test
 </pre>
-<p>If you just need a controller, run generator like this:</p>
+<p>If you just need a controller, run the generator like this:</p>
 <pre class="highlight shell">./skinny g controller <span class="nb">help</span>
 </pre>
 <p>And then, access <code>http://localhost:8080/help</code>.</p>
 
-<p>Finally, let&rsquo;s create war file to deploy.</p>
+<p>Finally, let&rsquo;s create a war file to deploy.</p>
 <pre class="highlight shell">./skinny package
 </pre>
 <hr/>
@@ -138,7 +138,7 @@ yo skinny
 
 <hr/>
 
-<p>The following tree is directories and files in skinny-blank-app project. Basically using this style is preferred.</p>
+<p>The following tree shows the directories and files in skinny-blank-app project. Using this directory layout is recommended.</p>
 <pre class="highlight shell">.
 ├── README.md
 ├── bin
@@ -221,12 +221,12 @@ yo skinny
 
 <h4 id="toc_6">Avoiding sbt&rsquo;s frequent OOMError</h4>
 
-<p>Skinny Framework uses xsbt-web-plugin. <code>skinny run</code> with sbt plugin invokes Jetty and detects source code changes and re-compiles and restarts Jetty server. Finally, you will see OutOfMemoryError (PermGen) after refreshing several times. To reduce this pain, specify sbt options like this:</p>
+<p>Skinny Framework uses xsbt-web-plugin. <code>skinny run</code> with sbt plugin invokes Jetty and detects source code changes and re-compiles and restarts Jetty server. Eventually, you will see OutOfMemoryError (PermGen) after refreshing several times. To reduce this pain, specify sbt options like this:</p>
 <pre class="highlight plaintext">SBT_OPTS="-XX:+CMSClassUnloadingEnabled -Xmx2048M -XX:MaxPermSize=512M"
 </pre>
             <hr/>
             <div class="alert alert-info small"> 
-              If this webpage has typo or something wrong, Please report or fix. <a href="/contribution.html">How?</a>
+              If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
             </div> 
 <a href="https://twitter.com/SkinnyFramework" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @SkinnyFramework</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

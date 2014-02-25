@@ -72,11 +72,11 @@
 
 <hr/>
 
-<h3 id="toc_1">Testability is much important</h3>
+<h3 id="toc_1">Testability is very important</h3>
 
 <hr/>
 
-<p>You can use Scalatra&rsquo;s great test support. Some optional feature is provided by skinny-test library.</p>
+<p>You can use Scalatra&rsquo;s great test support with Skinny. Some optional features are provided by the skinny-test library.</p>
 <pre class="highlight java"><span class="kd">class</span> <span class="nc">ControllerSpec</span> <span class="kd">extends</span> <span class="n">ScalatraFlatSpec</span> <span class="n">with</span> <span class="n">SkinnyTestSupport</span> <span class="o">{</span>
   <span class="n">addFilter</span><span class="o">(</span><span class="n">MembersController</span><span class="o">,</span> <span class="s">"/*"</span><span class="o">)</span>
 
@@ -95,12 +95,12 @@
 <pre class="highlight plaintext">./skinny test
 ./skinny test-only models.MemberSpec
 </pre>
-<p>If you need code coverage report, use <code>scoverage:test</code> instead. </p>
+<p>If you need a code coverage report, use <code>scoverage:test</code> instead. </p>
 
 <p><a href="https://github.com/scoverage/sbt-scoverage">https://github.com/scoverage/sbt-scoverage</a></p>
 <pre class="highlight plaintext">./skinny scoverage:test
 </pre>
-<p>WARNING: There is a known issue that scoverage doesn&rsquo;t work fine with Skinny ORM.</p>
+<p>WARNING: There is a known issue that scoverage doesn&rsquo;t work perfectly with Skinny ORM.</p>
 
 <hr/>
 
@@ -112,7 +112,7 @@
 
             <hr/>
             <div class="alert alert-info small"> 
-              If this webpage has typo or something wrong, Please report or fix. <a href="/contribution.html">How?</a>
+              If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
             </div> 
 <a href="https://twitter.com/SkinnyFramework" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @SkinnyFramework</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
