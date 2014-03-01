@@ -5,8 +5,8 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <!-- Use title if it's in the page YAML frontmatter -->
     <title>i18n - Skinny Framework</title>
-    <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
     <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
     <script src="/javascripts/all.js" type="text/javascript"></script>
   </head>
@@ -24,6 +24,7 @@
               <a href="/documentation" class="dropdown-toggle" data-toggle="dropdown">Documentation&nbsp;<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/documentation/getting-started.html">Getting Started</a></li>
+                <li><a href="/documentation/scaffolding.html">Scaffolding</a></li>
                 <li><a href="/documentation/controller-and-routes.html">Controller & Routes</a></li>
                 <li><a href="/documentation/validator.html">Validator</a></li>
                 <li><a href="/documentation/view-templates.html">View Templates</a></li>
@@ -51,6 +52,7 @@
             <h5>Documentation</h5>
             <hr/>
             <p><a href="/documentation/getting-started.html">Getting Started</a></p>
+            <p><a href="/documentation/scaffolding.html">Scaffolding</a></p>
             <p><a href="/documentation/controller-and-routes.html">Controller & Routes</a></p>
             <p><a href="/documentation/validator.html">Validator</a></p>
             <p><a href="/documentation/view-templates.html">View Templates</a></p>
@@ -74,6 +76,18 @@
 
 <hr/>
 
+<h3 id="original-i18n-support">Original i18n Support</h3>
+
+<hr/>
+
+<p>Skinny Framework supports i18n feature.</p>
+
+<p>Actually, Scalatra also has i18n feature but this is our original implementation.</p>
+
+<p>The reason to do so is that we need to seamlessly support validator&rsquo;s error messages and other things.</p>
+
+<hr/>
+
 <h3 id="default-locale">Default Locale</h3>
 
 <hr/>
@@ -86,15 +100,13 @@
 
 <span class="o">}</span>
 </pre>
-<p>By default, defaultLocale is None. If locale is set, <code>messages_{locale}.conf</code> instead of <code>messages.conf</code>.</p>
+<hr/>
+
+<h3 id="current-locale-value-in-sessions">Current Locale Value in Sessions</h3>
 
 <hr/>
 
-<h3 id="locale-stored-in-session">Locale stored in Session</h3>
-
-<hr/>
-
-<p>You can store users&#39; locale in servlet sessions or Skinny sessions.</p>
+<p>You can store users&#39; locale in Servlet sessions or Skinny sessions.</p>
 <pre class="highlight java"><span class="n">object</span> <span class="n">SettingsController</span> <span class="kd">extends</span> <span class="n">ApplicationController</span> <span class="o">{</span>
 
   <span class="n">def</span> <span class="n">updateLocale</span> <span class="o">=</span> <span class="o">{</span>
@@ -108,6 +120,99 @@
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/tree/develop/example">https://github.com/skinny-framework/skinny-framework/tree/develop/example</a></p>
 
+<hr/>
+
+<h3 id="messages(_{locale}).conf">messages(_{locale}).conf</h3>
+
+<hr/>
+
+<p>By default, defaultLocale is None. In this case, <code>src/main/resources/messages.conf</code> will be used.</p>
+<pre class="highlight plaintext">error {
+  required="{0} is required"
+  length="{0} length must be {1}"
+  .....
+}
+
+year="Year"
+month="Month"
+day="Day"
+hour="Hour"
+minute="Minute"
+second="Second"
+
+backToList="Back to list"
+submit="Submit"
+cancel="Cancel"
+detail="Detail"
+new="New"
+edit="Edit"
+delete="Delete"
+</pre>
+<p>When locale is set, <code>src/main/resources/messages_{locale}.conf</code> instead of <code>messages.conf</code>.</p>
+
+<p>The following example is <code>messages_ja.conf</code> for Japanese.</p>
+<pre class="highlight plaintext">error {
+  required="{0} を入力してください"
+  length="{0} は {1} 文字で入力してください"
+  .....
+}
+
+year="年"
+month="月"
+day="日"
+hour="時"
+minute="分"
+second="秒"
+
+backToList="一覧へ戻る"
+submit="送信"
+cancel="キャンセル"
+detail="詳細"
+new="追加"
+edit="変更"
+delete="削除"
+</pre>
+<hr/>
+
+<h3 id="i18n-in-view-templates">i18n in View Templates</h3>
+
+<hr/>
+
+<p>Simply use <code>skinny.I18n</code> instance. Current <code>skinny.I18n</code> instance is always available as <code>i18n</code> in view templates.</p>
+<pre class="highlight plaintext">&lt;%@val i18n: skinny.I18n %&gt;
+${i18n.get("submit")}
+${i18n.get("project.name")}
+</pre>
+<p>The above example expects the following <code>src/main/resources/messages_{locale}.conf</code>.</p>
+<pre class="highlight plaintext">submit="Submit"
+project {
+  name="Project Name"
+}
+</pre>
+<hr/>
+
+<h3 id="integration-with-skinny-validator">Integration with Skinny Validator</h3>
+
+<hr/>
+
+<p>Integration with Skinny Validator is much simple.</p>
+
+<p>The error message which is defined with <code>error</code> prefix and validator&rsquo;s <code>name</code> will be used.</p>
+
+<p>For instance, this validator&rsquo;s name is <code>notNull</code>,</p>
+<pre class="highlight java"><span class="kn">import</span> <span class="nn">skinny.validator._</span>
+<span class="n">object</span> <span class="n">notNull</span> <span class="kd">extends</span> <span class="n">ValidationRule</span> <span class="o">{</span>
+  <span class="n">def</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"notNull"</span>
+  <span class="n">def</span> <span class="n">isValid</span><span class="o">(</span><span class="nl">v:</span> <span class="n">Any</span><span class="o">)</span> <span class="o">=</span> <span class="n">v</span> <span class="o">!=</span> <span class="kc">null</span>
+<span class="o">}</span>
+</pre>
+<p>So validation error message should be defined in <code>messages.conf</code> like this:</p>
+<pre class="highlight plaintext">error {
+  notNull="{0} must not be null"
+}
+</pre>
+<p>That&rsquo;s all!</p>
+
             <hr/>
             <div class="alert alert-info small"> 
               If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
@@ -119,7 +224,7 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   </body>
 </html>
 
