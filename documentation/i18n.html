@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Tasks - Skinny Framework</title>
+    <title>i18n - Skinny Framework</title>
     <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css"/>
     <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
@@ -70,50 +70,43 @@
         <div class="col-xs-10">
           <div class="content">
 <a href="https://github.com/skinny-framework/skinny-framework"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
-            <h2 id="tasks">Tasks</h2>
+            <h2 id="i18n">i18n</h2>
 
 <hr/>
 
-<h3 id="task-launcher">Task Launcher</h3>
+<h3 id="default-locale">Default Locale</h3>
 
 <hr/>
+<pre class="highlight java"><span class="kn">package</span> <span class="n">controller</span>
+<span class="kn">import</span> <span class="nn">skinny._</span>
+<span class="kn">import</span> <span class="nn">skinny.filter._</span>
+<span class="n">trait</span> <span class="n">ApplicationController</span> <span class="kd">extends</span> <span class="n">SkinnyController</span> <span class="n">with</span> <span class="n">ErrorPageFilter</span> <span class="o">{</span>
 
-<p>skinny-task is a mechanism to run tasks easily. By default, the following tasks are already registered.</p>
+  <span class="n">override</span> <span class="n">def</span> <span class="n">defaultLocale</span> <span class="o">=</span> <span class="n">Some</span><span class="o">(</span><span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Locale</span><span class="o">(</span><span class="s">"ja"</span><span class="o">))</span>
 
-<p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/task/src/main/scala/skinny/task/TaskLauncher.scala">task/src/main/scala/skinny/task/TaskLauncher.scala</a></p>
-
-<p>skinny-blank-app prepares the easy-to-use <code>TaskRunner</code>.</p>
-
-<p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/yeoman-generator-skinny/app/templates/task/src/main/scala/TaskRunner.scala">task/src/main/scala/TaskRunner.scala</a></p>
-<pre class="highlight java"><span class="n">object</span> <span class="n">TaskRunner</span> <span class="kd">extends</span> <span class="n">skinny</span><span class="o">.</span><span class="na">task</span><span class="o">.</span><span class="na">TaskLauncher</span> <span class="o">{</span>
-
-  <span class="c1">// def register(name: String, runner: (List[String]) =&gt; Unit)</span>
-  <span class="n">register</span><span class="o">(</span><span class="s">"assets:precompile"</span><span class="o">,</span> <span class="o">(</span><span class="n">params</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="o">{</span>
-    <span class="n">val</span> <span class="n">buildDir</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="na">headOption</span><span class="o">.</span><span class="na">getOrElse</span><span class="o">(</span><span class="s">"build"</span><span class="o">)</span>
-    <span class="n">skinny</span><span class="o">.</span><span class="na">task</span><span class="o">.</span><span class="na">AssetsPrecompileTask</span><span class="o">.</span><span class="na">main</span><span class="o">(</span><span class="n">Array</span><span class="o">(</span><span class="n">buildDir</span><span class="o">))</span>
-  <span class="o">})</span>
 <span class="o">}</span>
 </pre>
-<hr/>
-
-<h3 id="creating-your-own-tasks">Creating Your Own Tasks</h3>
+<p>By default, defaultLocale is None. If locale is set, <code>messages_{locale}.conf</code> instead of <code>messages.conf</code>.</p>
 
 <hr/>
 
-<p>Creating tasks is pretty easy. You just need to define a function <code>(List[String]) =&gt; Unit</code>.</p>
-<pre class="highlight java"><span class="n">register</span><span class="o">(</span><span class="s">"echo"</span><span class="o">,</span> <span class="o">(</span><span class="n">params</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">params</span> <span class="n">foreach</span> <span class="n">println</span><span class="o">)</span>
-</pre>
-<p>Run the task:</p>
-<pre class="highlight plaintext">sbt "task/run echo foo bar baz"
+<h3 id="locale-stored-in-session">Locale stored in Session</h3>
 
-[info] Running TaskLancher echo foo bar baz
-foo
-bar
-baz
-</pre>
-<p>Improve your development with tasks.</p>
+<hr/>
 
-<p>If you have any good ideas for how to use tasks or improve the API, please write a blog post or give us some feedback.</p>
+<p>You can store users&#39; locale in servlet sessions or Skinny sessions.</p>
+<pre class="highlight java"><span class="n">object</span> <span class="n">SettingsController</span> <span class="kd">extends</span> <span class="n">ApplicationController</span> <span class="o">{</span>
+
+  <span class="n">def</span> <span class="n">updateLocale</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">val</span> <span class="n">locale</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="na">getAs</span><span class="o">[</span><span class="n">String</span><span class="o">](</span><span class="s">"locale"</span><span class="o">).</span><span class="na">orNull</span><span class="o">[</span><span class="n">String</span><span class="o">]</span>
+    <span class="n">setCurrentLocale</span><span class="o">(</span><span class="n">locale</span><span class="o">)</span> <span class="c1">// can get via currentLocale: Option[Locale]</span>
+    <span class="n">redirect</span><span class="o">(</span><span class="s">"somewher"</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+<p>See the example project here.</p>
+
+<p><a href="https://github.com/skinny-framework/skinny-framework/tree/develop/example">https://github.com/skinny-framework/skinny-framework/tree/develop/example</a></p>
 
             <hr/>
             <div class="alert alert-info small"> 

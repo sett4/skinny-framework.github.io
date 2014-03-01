@@ -29,6 +29,7 @@
                 <li><a href="/documentation/view-templates.html">View Templates</a></li>
                 <li><a href="/documentation/assets.html">Assets Support</a></li>
                 <li><a href="/documentation/mail.html">Mail</a></li>
+                <li><a href="/documentation/i18n.html">i18n</a></li>
                 <li><a href="/documentation/orm.html">O/R Mapper</a></li>
                 <li><a href="/documentation/factory-girl.html">FactoryGirl</a></li>
                 <li><a href="/documentation/db-migration.html">DB Migration</a></li>
@@ -55,6 +56,7 @@
             <p><a href="/documentation/view-templates.html">View Templates</a></p>
             <p><a href="/documentation/assets.html">Assets Support</a></p>
             <p><a href="/documentation/mail.html">Mail</a></p>
+            <p><a href="/documentation/i18n.html">i18n</a></p>
             <p><a href="/documentation/orm.html">O/R Mapper</a></p>
             <p><a href="/documentation/factory-girl.html">FactoryGirl</a></p>
             <p><a href="/documentation/db-migration.html">DB Migration</a></p>
@@ -70,7 +72,7 @@
 <a href="https://github.com/skinny-framework/skinny-framework"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
             <p><img alt="Logo" src="/images/logo.png" /></p>
 
-<h1 id="toc_0">Skinny Framework</h1>
+<h1 id="skinny-framework">Skinny Framework</h1>
 
 <hr/>
 
@@ -80,27 +82,27 @@
 
 <hr/>
 
-<h3 id="toc_1">Why Skinny?</h3>
+<h3 id="why-skinny?">Why Skinny?</h3>
 
 <hr/>
 
 <p>What does the name <code>Skinny</code> actually mean? We have three reasons as follows.</p>
 
-<h4 id="toc_2">Application should be skinny</h4>
+<h4 id="application-should-be-skinny">Application should be skinny</h4>
 
 <p>All the parts of a web application - controllers, models, views, routings and other settings - should be skinny. If you use Skinny framework, you can do without a lot of non-essential boilerplate code. For instance, when you create a simple registration form, all you need to do is define the parameters and validation rules and create view templates in an efficient way (ssp, scaml, jade, FreeMarker or something else) in most cases.</p>
 
-<h4 id="toc_3">Framework should be skinny</h4>
+<h4 id="framework-should-be-skinny">Framework should be skinny</h4>
 
 <p>Even if you need to investigate Skinny&rsquo;s internals, don&rsquo;t worry. Skinny keeps itself skinny, too. We believe that if the framework is well-designed, the resulting implementation will be skinny. </p>
 
-<h4 id="toc_4">&ldquo;su-ki-ni&rdquo; in Japanese means &ldquo;as you like it&rdquo;</h4>
+<h4 id="&quot;su-ki-ni&quot;-in-japanese-means-&quot;as-you-like-it&quot;">&ldquo;su-ki-ni&rdquo; in Japanese means &ldquo;as you like it&rdquo;</h4>
 
 <p>A sound-alike word <strong>&ldquo;好きに (su-ki-ni)&rdquo;</strong> in Japanese means <strong>&ldquo;as you like it&rdquo;</strong>. This is only half kidding but it also represents Skinny&rsquo;s concept. Skinny framework should provide flexible APIs to empower developers as much as possible and shouldn&rsquo;t get in the way.</p>
 
 <hr/>
 
-<h2 id="toc_5">Try Skinny Framework now!</h2>
+<h2 id="try-skinny-framework-now!">Try Skinny Framework now!</h2>
 
 <hr/>
 
@@ -108,7 +110,7 @@
 
 <p>If you&rsquo;re a Windows user, don&rsquo;t worry. Use skinny.bat on cmd.exe instead.</p>
 
-<p><a href="https://github.com/skinny-framework/skinny-framework/releases/download/1.0.0-RC2/skinny-blank-app.zip"><img alt="Download" src="/images/blank-app-download.png" /></a></p>
+<p><a href="https://github.com/skinny-framework/skinny-framework/releases/download/1.0.0-RC3/skinny-blank-app.zip"><img alt="Download" src="/images/blank-app-download.png" /></a></p>
 
 <p>Let&rsquo;s create our first Skinny app by using the scaffold generator.</p>
 <pre class="highlight shell">./skinny g scaffold members member name:String activated:Boolean luckyNumber:Option[Long] birthday:Option[LocalDate]
@@ -129,7 +131,7 @@
 </pre>
 <hr/>
 
-<h3 id="toc_6">Try by using Yeoman generator</h3>
+<h3 id="try-by-using-yeoman-generator">Try by using Yeoman generator</h3>
 
 <hr/>
 
@@ -148,7 +150,7 @@ yo skinny
 </pre>
 <hr/>
 
-<h3 id="toc_7">Integrating with existing Scalatra apps</h3>
+<h3 id="integrating-with-existing-scalatra-apps">Integrating with existing Scalatra apps</h3>
 
 <hr/>
 
@@ -156,27 +158,27 @@ yo skinny
 
 <p>After preparing the Scalatra app, just add the following dependency to your <code>project/Build.scala</code>.</p>
 <pre class="highlight plaintext">libraryDependencies ++= Seq(
-  "org.skinny-framework" %% "skinny-assets"    % "1.0.0-RC2",
-  "org.skinny-framework" %% "skinny-framework" % "1.0.0-RC2",
-  "org.skinny-framework" %% "skinny-task"      % "1.0.0-RC2",
-  "org.skinny-framework" %% "skinny-test"      % "1.0.0-RC2" % "test"
+  "org.skinny-framework" %% "skinny-assets"    % "1.0.0-RC3",
+  "org.skinny-framework" %% "skinny-framework" % "1.0.0-RC3",
+  "org.skinny-framework" %% "skinny-task"      % "1.0.0-RC3",
+  "org.skinny-framework" %% "skinny-test"      % "1.0.0-RC3" % "test"
 )
 </pre>
 <p>If you need only Skinny-ORM or Skinny-Validator, you can use only what you need. Even if you&rsquo;re using Play2 (or any other framework), these components are available for you as well.</p>
 <pre class="highlight plaintext">libraryDependencies ++= Seq(
-  "org.skinny-framework" %% "skinny-orm"        % "1.0.0-RC2",
-  "org.skinny-framework" %% "skinny-mailer"     % "1.0.0-RC2",
-  "org.skinny-framework" %% "skinny-standalone" % "1.0.0-RC2",
-  "org.skinny-framework" %% "skinny-validator"  % "1.0.0-RC2"
+  "org.skinny-framework" %% "skinny-orm"        % "1.0.0-RC3",
+  "org.skinny-framework" %% "skinny-mailer"     % "1.0.0-RC3",
+  "org.skinny-framework" %% "skinny-standalone" % "1.0.0-RC3",
+  "org.skinny-framework" %% "skinny-validator"  % "1.0.0-RC3"
 )
 </pre>
 <hr/>
 
-<h2 id="toc_8">Skinny&rsquo;s Components Overview</h2>
+<h2 id="skinny&#39;s-components-overview">Skinny&rsquo;s Components Overview</h2>
 
 <hr/>
 
-<h3 id="toc_9">Routing &amp; Controller &amp; Validator</h3>
+<h3 id="routing-&amp;-controller-&amp;-validator">Routing &amp; Controller &amp; Validator</h3>
 
 <hr/>
 
@@ -222,7 +224,7 @@ yo skinny
 
 <hr/>
 
-<h3 id="toc_10">Skinny ORM</h3>
+<h3 id="skinny-orm">Skinny ORM</h3>
 
 <hr/>
 
@@ -267,7 +269,7 @@ yo skinny
 
 <hr/>
 
-<h3 id="toc_11">DB Migration with Flyway</h3>
+<h3 id="db-migration-with-flyway">DB Migration with Flyway</h3>
 
 <hr/>
 
@@ -282,7 +284,7 @@ yo skinny
 
 <hr/>
 
-<h3 id="toc_12">View Templates</h3>
+<h3 id="view-templates">View Templates</h3>
 
 <hr/>
 
@@ -313,7 +315,7 @@ yo skinny
 
 <hr/>
 
-<h3 id="toc_13">Skinny Mailer</h3>
+<h3 id="skinny-mailer">Skinny Mailer</h3>
 
 <hr/>
 
@@ -344,7 +346,7 @@ yo skinny
 
 <hr/>
 
-<h3 id="toc_14">Assets Support (CoffeeScript, LESS, Sass and JXS for React)</h3>
+<h3 id="assets-support-(coffeescript,-less,-sass-and-jxs-for-react)">Assets Support (CoffeeScript, LESS, Sass and JXS for React)</h3>
 
 <hr/>
 
@@ -355,9 +357,9 @@ yo skinny
 
 <p>First, add <code>skinny-assets</code> to libraryDependencies.</p>
 <pre class="highlight plaintext">libraryDependencies ++= Seq(
-  "org.skinny-framework" %% "skinny-framework" % "1.0.0-RC2",
-  "org.skinny-framework" %% "skinny-assets"    % "1.0.0-RC2",
-  "org.skinny-framework" %% "skinny-test"      % "1.0.0-RC2" % "test"
+  "org.skinny-framework" %% "skinny-framework" % "1.0.0-RC3",
+  "org.skinny-framework" %% "skinny-assets"    % "1.0.0-RC3",
+  "org.skinny-framework" %% "skinny-test"      % "1.0.0-RC3" % "test"
 )
 </pre>
 <p>And then, add <code>AssetsController</code> to routes. Now you can easily use CoffeeScript, LESS and Sass.</p>
@@ -376,7 +378,7 @@ yo skinny
 
 <hr/>
 
-<h3 id="toc_15">Testing Support</h3>
+<h3 id="testing-support">Testing Support</h3>
 
 <hr/>
 
@@ -395,7 +397,7 @@ yo skinny
 
 <hr/>
 
-<h3 id="toc_16">FactoryGirl</h3>
+<h3 id="factorygirl">FactoryGirl</h3>
 
 <hr/>
 
@@ -416,7 +418,7 @@ yo skinny
 
 <hr/>
 
-<h3 id="toc_17">Under The MIT License</h3>
+<h3 id="under-the-mit-license">Under The MIT License</h3>
 
 <hr/>
 

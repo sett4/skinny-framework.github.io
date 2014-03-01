@@ -29,6 +29,7 @@
                 <li><a href="/documentation/view-templates.html">View Templates</a></li>
                 <li><a href="/documentation/assets.html">Assets Support</a></li>
                 <li><a href="/documentation/mail.html">Mail</a></li>
+                <li><a href="/documentation/i18n.html">i18n</a></li>
                 <li><a href="/documentation/orm.html">O/R Mapper</a></li>
                 <li><a href="/documentation/factory-girl.html">FactoryGirl</a></li>
                 <li><a href="/documentation/db-migration.html">DB Migration</a></li>
@@ -55,6 +56,7 @@
             <p><a href="/documentation/view-templates.html">View Templates</a></p>
             <p><a href="/documentation/assets.html">Assets Support</a></p>
             <p><a href="/documentation/mail.html">Mail</a></p>
+            <p><a href="/documentation/i18n.html">i18n</a></p>
             <p><a href="/documentation/orm.html">O/R Mapper</a></p>
             <p><a href="/documentation/factory-girl.html">FactoryGirl</a></p>
             <p><a href="/documentation/db-migration.html">DB Migration</a></p>
@@ -68,11 +70,11 @@
         <div class="col-xs-10">
           <div class="content">
 <a href="https://github.com/skinny-framework/skinny-framework"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
-            <h2 id="toc_0">FactoryGirl</h2>
+            <h2 id="factorygirl">FactoryGirl</h2>
 
 <hr/>
 
-<h3 id="toc_1">Easy-to-use Fixture Tool</h3>
+<h3 id="easy-to-use-fixture-tool">Easy-to-use Fixture Tool</h3>
 
 <hr/>
 
@@ -81,11 +83,11 @@
 <p>FactoryGirl is a part of Skinny ORM, so you can use FactoryGirl even in your Play2 apps!</p>
 
 <p>Just add skinny-ORM to your apps.</p>
-<pre class="highlight plaintext">libraryDependencies += "org.skinny-framework" %% "skinny-orm" % "1.0.0-RC2"
+<pre class="highlight plaintext">libraryDependencies += "org.skinny-framework" %% "skinny-orm" % "1.0.0-RC3"
 </pre>
 <hr/>
 
-<h3 id="toc_2">Usage</h3>
+<h3 id="usage">Usage</h3>
 
 <hr/>
 
@@ -135,13 +137,13 @@ skill {
 </pre>
 <hr/>
 
-<h3 id="toc_3">Methods</h3>
+<h3 id="methods">Methods</h3>
 
 <p>You should be aware that FactoryGirl has the following two methods.</p>
 
 <hr/>
 
-<h3 id="toc_4">withVariables</h3>
+<h3 id="withvariables">withVariables</h3>
 
 <p>Attributes passed to this method will be used for replacing variables such as &ldquo;#{userId}&rdquo; in factories.conf.</p>
 <pre class="highlight java"><span class="cm">/* factories.conf
@@ -157,7 +159,7 @@ member {
 </pre>
 <hr/>
 
-<h3 id="toc_5">withAttributes</h3>
+<h3 id="withattributes">withAttributes</h3>
 
 <p>These attributes will overwrite the values in factories.conf. </p>
 <pre class="highlight java"><span class="cm">/* factories.conf
@@ -174,7 +176,7 @@ member {
 </pre>
 <hr/>
 
-<h3 id="toc_6">More Examples:</h3>
+<h3 id="more-examples:">More Examples:</h3>
 
 <p>You can find more examples here:</p>
 
