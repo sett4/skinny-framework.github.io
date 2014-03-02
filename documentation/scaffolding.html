@@ -234,7 +234,7 @@ INFO: Successfully applied 2 migrations to schema "PUBLIC" (execution time 00:00
 <p>When you have <code>project_members</code> table in database,</p>
 <pre class="highlight sql"><span class="c1">-- For H2 Database
 </span><span class="k">create</span> <span class="k">table</span> <span class="n">project_members</span> <span class="p">(</span>
-  <span class="n">id</span> <span class="n">bigserial</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+  <span class="n">member_id</span> <span class="n">bigserial</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
   <span class="n">name</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
   <span class="n">nickname</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
   <span class="n">joined_at</span> <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
@@ -256,9 +256,10 @@ INFO: Successfully applied 2 migrations to schema "PUBLIC" (execution time 00:00
 
  *** Skinny Reverse Engineering Task ***
 
-  Table: project_members
-  Resources: projectMembers
-  Resource: projectMember
+  Table     : project_members
+  ID        : memberId
+  Resources : projectMembers
+  Resource  : projectMember
 
   Columns:
    - name:String:varchar(512)
