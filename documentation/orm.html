@@ -12,7 +12,6 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
     <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -43,11 +42,12 @@
             </li>
             <li><a href="https://groups.google.com/forum/#!forum/skinny-framework">Users Group</a></li>
             <li><a href="https://github.com/skinny-framework/skinny-framework">GitHub</a></li>
+            <li><a href="https://travis-ci.org/skinny-framework/skinny-framework"><img src="https://travis-ci.org/skinny-framework/skinny-framework.png" alt="Build Status"></a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-        <div class="col-xs-2">
+        <div class="col-sm-2">
           <div class="content small">
             <h5>Documentation</h5>
             <hr/>
@@ -69,7 +69,7 @@
             <p><a href="/contribution.html">Contribution</a></p>
           </div>
         </div>
-        <div class="col-xs-10">
+        <div class="col-sm-10">
           <div class="content">
 <a href="https://github.com/skinny-framework/skinny-framework"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
             <h2 id="orm">ORM</h2>
@@ -147,6 +147,13 @@
 <span class="n">val</span> <span class="nl">members:</span> <span class="n">List</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span> <span class="o">=</span> <span class="n">Member</span><span class="o">.</span><span class="na">findAllBy</span><span class="o">(</span><span class="n">sqls</span><span class="o">.</span><span class="na">in</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">id</span><span class="o">,</span> <span class="n">Seq</span><span class="o">(</span><span class="mi">123</span><span class="o">,</span> <span class="mi">234</span><span class="o">,</span> <span class="mi">345</span><span class="o">)))</span>
 
 <span class="n">val</span> <span class="nl">members:</span> <span class="n">List</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span> <span class="o">=</span> <span class="n">Member</span><span class="o">.</span><span class="na">where</span><span class="o">(</span><span class="err">'</span><span class="n">id</span> <span class="o">-&gt;</span> <span class="n">Seq</span><span class="o">(</span><span class="mi">123</span><span class="o">,</span> <span class="mi">234</span><span class="o">,</span> <span class="mi">345</span><span class="o">)).</span><span class="na">apply</span><span class="o">()</span>
+
+<span class="c1">// will return 345, 234, 123 in order</span>
+<span class="n">val</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Member</span><span class="o">.</span><span class="na">defaultAlias</span>
+<span class="n">val</span> <span class="nl">members:</span> <span class="n">List</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span> <span class="o">=</span> 
+  <span class="n">Member</span><span class="o">.</span><span class="na">where</span><span class="o">(</span><span class="err">'</span><span class="n">id</span> <span class="o">-&gt;</span> <span class="n">Seq</span><span class="o">(</span><span class="mi">123</span><span class="o">,</span> <span class="mi">234</span><span class="o">,</span> <span class="mi">345</span><span class="o">))</span>
+    <span class="o">.</span><span class="na">orderBy</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">desc</span><span class="o">).</span><span class="na">offset</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">limit</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">apply</span><span class="o">()</span>
 
 <span class="c1">// ------------</span>
 <span class="c1">// find by condition</span>
@@ -687,9 +694,7 @@
 <p><code>timetamps</code> from ActiveRecord is available as the <code>TimestampsFeature</code> trait. </p>
 
 <p>By default, this trait expects two columns on the table - <code>created_at timestamp not null</code> and <code>updated_at timestamp</code>. If you need customizing, override *FieldName methods as follows.</p>
-<pre class="highlight java"><span class="kd">class</span> <span class="nf">Member</span><span class="p">(</span><span class="nl">id:</span> <span class="n">Long</span><span class="o">,</span> <span class="nl">name:</span> <span class="n">String</span><span class="o">,</span>
-  <span class="nl">createdAt:</span> <span class="n">DateTime</span><span class="o">,</span>
-  <span class="nl">updatedAt:</span> <span class="n">Option</span><span class="o">[</span><span class="n">DateTime</span><span class="o">]</span> <span class="o">=</span> <span class="n">None</span><span class="o">)</span>
+<pre class="highlight java"><span class="kd">class</span> <span class="nf">Member</span><span class="p">(</span><span class="nl">id:</span> <span class="n">Long</span><span class="o">,</span> <span class="nl">name:</span> <span class="n">String</span><span class="o">,</span> <span class="nl">createdAt:</span> <span class="n">DateTime</span><span class="o">,</span> <span class="nl">updatedAt:</span> <span class="n">DateTime</span><span class="o">)</span>
 
 <span class="n">object</span> <span class="n">Member</span> <span class="kd">extends</span> <span class="n">SkinnyCRUDMapper</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span> <span class="n">with</span> <span class="n">TimestampsFeature</span><span class="o">[</span><span class="n">Member</span><span class="o">]</span> <span class="o">{</span>
 
