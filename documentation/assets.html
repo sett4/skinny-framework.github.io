@@ -236,9 +236,27 @@ React.renderComponent(
   )
 */</span>
 </pre>
-<p>Easy to start! Just put *.scala files under <code>WEB-INF/assets/scala</code>:</p>
+<h3 id="how-to-work-with-scala.js">How to work with Scala.js</h3>
+
+<p>Easy to start! </p>
+
+<h4 id="terminal-a">Terminal A</h4>
+
+<p>Just invoke Skinny app.</p>
+<pre class="highlight shell">./skinny run
+</pre>
+<h4 id="terminal-b">Terminal B</h4>
+
+<p>Invoke Scala.js assets watcher process (which is similar to grunt watch).</p>
+<pre class="highlight shell">./skinny scalajs:watch
+</pre>
+<h4 id="put-scala-code-into-assets-directory">Put Scala code into assets directory</h4>
+
+<p>Just put *.scala files under <code>WEB-INF/assets/scala</code>:</p>
 
 <p>You can access the latest transformed JS file at <code>http://localhost:8080/assets/js/application.js</code>.</p>
+
+<p>Or when using only <code>scalajs:watch</code>, it&rsquo;s also possible to acces <code>src/main/webapp/assets/js/application-*.js</code> directly.</p>
 
 <hr/>
 
