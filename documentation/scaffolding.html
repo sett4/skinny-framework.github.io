@@ -212,13 +212,13 @@
   <span class="n">override</span> <span class="n">def</span> <span class="n">resourcesBasePath</span> <span class="o">=</span> <span class="n">s</span><span class="s">"/${toSnakeCase(resourcesName)}"</span>
   <span class="n">override</span> <span class="n">def</span> <span class="n">useSnakeCasedParamKeys</span> <span class="o">=</span> <span class="kc">true</span>
 
+  <span class="n">override</span> <span class="n">def</span> <span class="n">createParams</span> <span class="o">=</span> <span class="n">Params</span><span class="o">(</span><span class="n">params</span><span class="o">).</span><span class="na">withDateTime</span><span class="o">(</span><span class="s">"joined_at"</span><span class="o">).</span><span class="na">withDateTime</span><span class="o">(</span><span class="s">"leave_at"</span><span class="o">)</span>
   <span class="n">override</span> <span class="n">def</span> <span class="n">createForm</span> <span class="o">=</span> <span class="n">validation</span><span class="o">(</span><span class="n">createParams</span><span class="o">,</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">maxLength</span><span class="o">(</span><span class="mi">512</span><span class="o">),</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"nickname"</span><span class="o">)</span> <span class="n">is</span> <span class="n">maxLength</span><span class="o">(</span><span class="mi">512</span><span class="o">),</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"joined_at"</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">dateTimeFormat</span><span class="o">,</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"leave_at"</span><span class="o">)</span> <span class="n">is</span> <span class="n">dateTimeFormat</span>
   <span class="o">)</span>
-  <span class="n">override</span> <span class="n">def</span> <span class="n">createParams</span> <span class="o">=</span> <span class="n">Params</span><span class="o">(</span><span class="n">params</span><span class="o">).</span><span class="na">withDateTime</span><span class="o">(</span><span class="s">"joined_at"</span><span class="o">).</span><span class="na">withDateTime</span><span class="o">(</span><span class="s">"leave_at"</span><span class="o">)</span>
   <span class="n">override</span> <span class="n">def</span> <span class="n">createFormStrongParameters</span> <span class="o">=</span> <span class="n">Seq</span><span class="o">(</span>
     <span class="s">"name"</span> <span class="o">-&gt;</span> <span class="n">ParamType</span><span class="o">.</span><span class="na">String</span><span class="o">,</span>
     <span class="s">"nickname"</span> <span class="o">-&gt;</span> <span class="n">ParamType</span><span class="o">.</span><span class="na">String</span><span class="o">,</span>
@@ -248,9 +248,7 @@
 </pre>
 <p>Run the <code>reverse-scaffold</code> command like this.</p>
 
-<p>This command uses DB settings in the <code>src/main/resources/application.conf</code>.</p>
-
-<p>Default SkinnyEnv is <code>development</code>. If you need specifying others, add it as the fourth parameter.</p>
+<p>This command uses DB settings in the <code>src/main/resources/application.conf</code>. SkinnyEnv is set as <code>development</code>. </p>
 <pre class="highlight plaintext">$ ./skinny g reverse-scaffold:scaml project_members projectMembers projectMember
 
 [info] Running TaskRunner generate:reverse-scaffold:scaml project_members projectMembers projectMember
@@ -296,14 +294,18 @@
 <h4 id="parameters">Parameters</h4>
 
 <p>Scaffold command&rsquo;s parameters are &hellip;</p>
-<pre class="highlight plaintext">./skinny g reverse-scaffold:{template} {tableName} {resources} {resource} {skinnyEnv}"
+<pre class="highlight plaintext">./skinny g reverse-scaffold:{template} {tableName} {resources} {resource}
 </pre>
 <ul>
 <li>{template}: &ldquo;ssp&rdquo; / &ldquo;scaml&rdquo; / &ldquo;jade&rdquo; (Scalate template name)</li>
 <li>{tableName}: Target table name in the existing database</li>
 <li>{resources}: Resource name in the plural (camelCase)</li>
 <li>{resource}: Resource name (camelCase)</li>
-<li>{skinnyEnv}: (optional) default value is &ldquo;development&rdquo;</li>
+</ul>
+<pre class="highlight plaintext">./skinny g reverse-scaffold:{template} {namespace} {tableName} {resources} {resource}
+</pre>
+<ul>
+<li>{namespace}: prefix for the resource (e.g. admin.foo.bar)</li>
 </ul>
 
             <hr/>

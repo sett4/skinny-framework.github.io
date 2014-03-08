@@ -139,6 +139,61 @@
 
 <p>This value is only for stand alone apps. Default value is 8080. You can customize the port number on which the stand alone app server listens.</p>
 
+<hr/>
+
+<h3 id="deployment-on-heroku">Deployment on Heroku</h3>
+
+<hr/>
+
+<p>Hosting your Skinny app on Heroku is pretty simple.</p>
+
+<p>First, make sure that you have the correct DB driver for the production environment. Since you&rsquo;re using Heroku, most likely you are using PostgreSQL. In that case, you will need to add a dependency that looks like this.</p>
+<pre class="highlight plaintext">org.postgresql"          % "postgresql"          % "9.3-1100-jdbc41" 
+</pre>
+<hr/>
+
+<h4 id="setting-up-a-heroku-app">Setting up a Heroku app</h4>
+
+<hr/>
+
+<p>Prerequisites: we assume you have a Heroku account and the Heroku toolbelt is installed. See the <a href="https://devcenter.heroku.com/articles/quickstart">Heroku documentation</a> for more details on getting started with Heroku.</p>
+
+<p>In the root directory of your Skinny app, run the following command.</p>
+<pre class="highlight plaintext">$ heroku apps:create heroku [application name]
+</pre>
+<hr/>
+
+<h4 id="deploying">Deploying</h4>
+
+<hr/>
+
+<p>Just push your app to git, and Heroku will stage and deploy it.</p>
+<pre class="highlight plaintext">$ git push heroku master
+</pre>
+<p>Note that this will take a long time, as Heroku has to download the world every time it stages the app.</p>
+
+<p>When the deployment completes, your app should be available to view in a web browser.</p>
+
+<hr/>
+
+<h4 id="running-skinny-commands">Running skinny commands</h4>
+
+<hr/>
+
+<p>From the root directory of your Skinny app, execute the <code>heroku run</code> command.</p>
+<pre class="highlight plaintext">$ heroku run heroku/skinny [args...]
+</pre>
+<p>For example, to perform a DB migration, you would run</p>
+<pre class="highlight plaintext">$ heroku run heroku/skinny db:migrate production
+</pre>
+<hr/>
+
+<h4 id="troubleshooting">Troubleshooting</h4>
+
+<hr/>
+
+<p>If you have a file called <code>package.json</code> in the root directory, Heroku will get confused and try to deploy your app as a Node.js server. As a workaround, just delete or rename the <code>package.json</code> file.</p>
+
             <hr/>
             <div class="alert alert-info small"> 
               If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>

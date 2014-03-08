@@ -233,22 +233,22 @@ If you&rsquo;d like to customize routings (e.g. use only creation and deletion),
   <span class="n">override</span> <span class="n">def</span> <span class="n">resourceName</span> <span class="o">=</span> <span class="s">"member"</span>
 
   <span class="c1">// parameters &amp; validations for creation</span>
+  <span class="n">override</span> <span class="n">def</span> <span class="n">createParams</span> <span class="o">=</span> <span class="n">Params</span><span class="o">(</span><span class="n">params</span><span class="o">).</span><span class="na">withDate</span><span class="o">(</span><span class="s">"birthday"</span><span class="o">)</span>
   <span class="n">override</span> <span class="n">def</span> <span class="n">createForm</span> <span class="o">=</span> <span class="n">validation</span><span class="o">(</span><span class="n">createParams</span><span class="o">,</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">maxLength</span><span class="o">(</span><span class="mi">512</span><span class="o">),</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"birthday"</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">dateFormat</span>
   <span class="o">)</span>
-  <span class="n">override</span> <span class="n">def</span> <span class="n">createParams</span> <span class="o">=</span> <span class="n">Params</span><span class="o">(</span><span class="n">params</span><span class="o">).</span><span class="na">withDate</span><span class="o">(</span><span class="s">"birthday"</span><span class="o">)</span>
   <span class="n">override</span> <span class="n">def</span> <span class="n">createFormStrongParameters</span> <span class="o">=</span> <span class="n">Seq</span><span class="o">(</span>
     <span class="s">"name"</span> <span class="o">-&gt;</span> <span class="n">ParamType</span><span class="o">.</span><span class="na">String</span><span class="o">,</span>
     <span class="s">"birthday"</span> <span class="o">-&gt;</span> <span class="n">ParamType</span><span class="o">.</span><span class="na">LocalDate</span>
   <span class="o">)</span>
 
   <span class="c1">// parameters &amp; validations for modification</span>
+  <span class="n">override</span> <span class="n">def</span> <span class="n">updateParams</span> <span class="o">=</span> <span class="n">Params</span><span class="o">(</span><span class="n">params</span><span class="o">).</span><span class="na">withDate</span><span class="o">(</span><span class="s">"birthday"</span><span class="o">)</span>
   <span class="n">override</span> <span class="n">def</span> <span class="n">updateForm</span> <span class="o">=</span> <span class="n">validation</span><span class="o">(</span><span class="n">updateParams</span><span class="o">,</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">maxLength</span><span class="o">(</span><span class="mi">512</span><span class="o">),</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"birthday"</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">dateFormat</span>
   <span class="o">)</span>
-  <span class="n">override</span> <span class="n">def</span> <span class="n">updateParams</span> <span class="o">=</span> <span class="n">Params</span><span class="o">(</span><span class="n">params</span><span class="o">).</span><span class="na">withDate</span><span class="o">(</span><span class="s">"birthday"</span><span class="o">)</span>
   <span class="n">override</span> <span class="n">def</span> <span class="n">updateFormStrongParameters</span> <span class="o">=</span> <span class="n">Seq</span><span class="o">(</span>
     <span class="s">"name"</span> <span class="o">-&gt;</span> <span class="n">ParamType</span><span class="o">.</span><span class="na">String</span><span class="o">,</span>
     <span class="s">"birthday"</span> <span class="o">-&gt;</span> <span class="n">ParamType</span><span class="o">.</span><span class="na">LocalDate</span>
@@ -273,14 +273,24 @@ If you&rsquo;d like to customize routings (e.g. use only creation and deletion),
 <li>GET /members.json</li>
 <li>GET /members/new</li>
 <li>POST /members</li>
+<li>POST /members.xml</li>
+<li>POST /members.json</li>
 <li>POST /members/</li>
 <li>GET /members/{id}</li>
 <li>GET /members/{id}.xml</li>
 <li>GET /members/{id}.json</li>
 <li>GET /members/{id}/edit</li>
+<li>POST /members/{id}.xml</li>
+<li>POST /members/{id}.json</li>
 <li>POST /members/{id}</li>
+<li>PUT /members/{id}.xml</li>
+<li>PUT /members/{id}.json</li>
 <li>PUT /members/{id}</li>
+<li>PATCH /members/{id}.xml</li>
+<li>PATCH /members/{id}.json</li>
 <li>PATCH /members/{id}</li>
+<li>DELETE /members/{id}.xml</li>
+<li>DELETE /members/{id}.json</li>
 <li>DELETE /members/{id}</li>
 </ul>
 
