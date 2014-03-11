@@ -29,6 +29,7 @@
                 <li><a href="/documentation/view-templates.html">View Templates</a></li>
                 <li><a href="/documentation/assets.html">Assets Support</a></li>
                 <li><a href="/documentation/mail.html">Mail</a></li>
+                <li><a href="/documentation/worker_jobs.html">Worker Jobs</a></li>
                 <li><a href="/documentation/i18n.html">i18n</a></li>
                 <li><a href="/documentation/orm.html">O/R Mapper</a></li>
                 <li><a href="/documentation/factory-girl.html">FactoryGirl</a></li>
@@ -47,29 +48,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-        <div class="col-sm-2">
-          <div class="content small">
-            <h5>Documentation</h5>
-            <hr/>
-            <p><a href="/documentation/getting-started.html">Getting Started</a></p>
-            <p><a href="/documentation/scaffolding.html">Scaffolding</a></p>
-            <p><a href="/documentation/controller-and-routes.html">Controller & Routes</a></p>
-            <p><a href="/documentation/validator.html">Validator</a></p>
-            <p><a href="/documentation/view-templates.html">View Templates</a></p>
-            <p><a href="/documentation/assets.html">Assets Support</a></p>
-            <p><a href="/documentation/mail.html">Mail</a></p>
-            <p><a href="/documentation/i18n.html">i18n</a></p>
-            <p><a href="/documentation/orm.html">O/R Mapper</a></p>
-            <p><a href="/documentation/factory-girl.html">FactoryGirl</a></p>
-            <p><a href="/documentation/db-migration.html">DB Migration</a></p>
-            <p><a href="/documentation/json.html">Working with JSON</a></p>
-            <p><a href="/documentation/tasks.html">Tasks</a></p>
-            <p><a href="/documentation/testing.html">Testing</a></p>
-            <p><a href="/documentation/packaging.html">Packaging</a></p>
-            <p><a href="/contribution.html">Contribution</a></p>
-          </div>
-        </div>
-        <div class="col-sm-10">
+        <div class="col-sm-12">
           <div class="content">
 <a href="https://github.com/skinny-framework/skinny-framework"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
             <h2 id="controller-&amp;-routes">Controller &amp; Routes</h2>
@@ -413,6 +392,7 @@ If you&rsquo;d like to customize routings (e.g. use only creation and deletion),
     <span class="n">db</span><span class="o">.</span><span class="na">begin</span><span class="o">()</span>
   <span class="o">}</span>
 
+  <span class="c1">// will handle exceptions occurred in controllers</span>
   <span class="n">addErrorFilter</span> <span class="o">{</span> <span class="k">case</span> <span class="nl">e:</span> <span class="n">Throwable</span> <span class="o">=&gt;</span>
     <span class="n">Option</span><span class="o">(</span><span class="n">ThreadLocalDB</span><span class="o">.</span><span class="na">load</span><span class="o">()).</span><span class="na">foreach</span> <span class="o">{</span> <span class="n">db</span> <span class="o">=&gt;</span>
       <span class="k">if</span> <span class="o">(</span><span class="n">db</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">db</span><span class="o">.</span><span class="na">isTxNotActive</span><span class="o">)</span> <span class="n">using</span><span class="o">(</span><span class="n">db</span><span class="o">)(</span><span class="n">_</span><span class="o">.</span><span class="na">rollbackIfActive</span><span class="o">())</span>
@@ -582,7 +562,7 @@ When you enable SkinnySession, these features also start using SkinnySession ins
 <span class="k">create</span> <span class="k">table</span> <span class="n">skinny_session_attributes</span> <span class="p">(</span>
   <span class="n">skinny_session_id</span> <span class="n">bigint</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
   <span class="n">attribute_name</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-  <span class="n">attribute_value</span> <span class="n">varbinary</span><span class="p">(</span><span class="mi">10485760</span><span class="p">),</span>
+  <span class="n">attribute_value</span> <span class="n">bytea</span><span class="p">,</span>
   <span class="k">foreign</span> <span class="k">key</span><span class="p">(</span><span class="n">skinny_session_id</span><span class="p">)</span> <span class="k">references</span> <span class="n">skinny_sessions</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
 <span class="p">);</span>
 <span class="k">alter</span> <span class="k">table</span> <span class="n">skinny_session_attributes</span> <span class="k">add</span> <span class="k">constraint</span>
