@@ -102,11 +102,16 @@
 
 <hr/>
 
-<h4 id="skinny.env-or-skinny_env">skinny.env or SKINNY_ENV</h4>
+<h4 id="skinny.env-or-app.env-or-skinnyenv-or-appenv">skinny.env or app.env or SKINNY<em>ENV or APP</em>ENV</h4>
 
 <hr/>
 
-<p>Default value is &ldquo;development&rdquo;. If skinny.env is &ldquo;production&rdquo;, application load the &ldquo;production&rdquo; settings from &ldquo;src/main/resources/application.conf&rdquo;.</p>
+<p>Default value is &ldquo;development&rdquo;. If <code>skinny.env</code> system property is &ldquo;production&rdquo;, application load the &ldquo;production&rdquo; settings from &ldquo;src/main/resources/application.conf&rdquo;.</p>
+
+<ul>
+<li>sys.props.get(&ldquo;skinny.env&rdquo;) or sys.props.get(&ldquo;app.env&rdquo;)</li>
+<li>sys.env.get(&ldquo;SKINNY<em>ENV&rdquo;) or sys.env.get(&ldquo;APP</em>ENV&rdquo;)</li>
+</ul>
 
 <p>You can access the value via <a href="https://github.com/skinny-framework/skinny-framework/blob/develop/common/src/main/scala/skinny/SkinnyEnv.scala"><code>skinny.SkinnyEnv</code></a> in application.</p>
 
