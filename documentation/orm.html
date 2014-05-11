@@ -74,7 +74,9 @@
 
 <hr/>
 
-<h4 id="minimum-setup">Minimum Setup</h4>
+<h3 id="minimum-setup">Minimum Setup</h3>
+
+<hr/>
 
 <p>Even if you&rsquo;re not familiar with Skinny apps, don&rsquo;t worry. </p>
 
@@ -84,7 +86,7 @@
 
 <hr/>
 
-<h5 id="${project_root}/build.sbt">${PROJECT_ROOT}/build.sbt</h5>
+<h4 id="build.sbt">build.sbt</h4>
 <pre class="highlight scala"><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span>
   <span class="s">"org.skinny-framework"</span> <span class="o">%%</span> <span class="s">"skinny-orm"</span>      <span class="o">%</span> <span class="s">"1.0.14"</span><span class="o">,</span>
   <span class="s">"com.h2database"</span>       <span class="o">%</span>  <span class="s">"h2"</span>              <span class="o">%</span> <span class="s">"1.4.178"</span><span class="o">,</span>
@@ -101,9 +103,7 @@ implicit val session = AutoSession
 """</span>
 </pre>
 
-<hr/>
-
-<h5 id="${project_root}/src/main/resources/application.conf">${PROJECT_ROOT}/src/main/resources/application.conf</h5>
+<h4 id="src/main/resources/application.conf">src/main/resources/application.conf</h4>
 <pre class="highlight plaintext">development {
   db {
     default {
@@ -483,6 +483,8 @@ implicit val session = AutoSession
 
 <h4 id="belongsto">BelongsTo</h4>
 
+<hr/>
+
 <p>Same as ActiveRecord&rsquo;s <code>belongs_to</code> assocation:</p>
 
 <p><a href="http://guides.rubyonrails.org/association_basics.html#the-belongs-to-association">http://guides.rubyonrails.org/association_basics.html#the-belongs-to-association</a></p>
@@ -541,6 +543,8 @@ implicit val session = AutoSession
 
 <h4 id="hasone">HasOne</h4>
 
+<hr/>
+
 <p>Same as ActiveRecord&rsquo;s <code>has_one</code> assocation:</p>
 
 <p><a href="http://guides.rubyonrails.org/association_basics.html#the-has-one-association">http://guides.rubyonrails.org/association_basics.html#the-has-one-association</a></p>
@@ -573,6 +577,8 @@ implicit val session = AutoSession
 <hr/>
 
 <h4 id="hasmany">HasMany</h4>
+
+<hr/>
 
 <p>Same as ActiveRecord&rsquo;s <code>has_many</code> assocation:</p>
 
@@ -645,22 +651,9 @@ implicit val session = AutoSession
 
 <hr/>
 
-<h4 id="what&#39;s-more">What&rsquo;s more</h4>
-
-<p>You can find more examples here:</p>
-
-<p>Table definitions:
-<a href="https://github.com/skinny-framework/skinny-framework/blob/develop/orm/src/test/scala/skinny/orm/CreateTables.scala">https://github.com/skinny-framework/skinny-framework/blob/develop/orm/src/test/scala/skinny/orm/CreateTables.scala</a></p>
-
-<p>Model examples:
-<a href="https://github.com/skinny-framework/skinny-framework/blob/develop/orm/src/test/scala/skinny/orm/models.scala">https://github.com/skinny-framework/skinny-framework/blob/develop/orm/src/test/scala/skinny/orm/models.scala</a></p>
-
-<p>Usage:
-<a href="https://github.com/skinny-framework/skinny-framework/blob/develop/orm/src/test/scala/skinny/orm/SkinnyORMSpec.scala">https://github.com/skinny-framework/skinny-framework/blob/develop/orm/src/test/scala/skinny/orm/SkinnyORMSpec.scala</a></p>
+<h3 id="entity-equality">Entity Equality</h3>
 
 <hr/>
-
-<h4 id="entity-equality">Entity Equality</h4>
 
 <p>Basically using case classes for entities is recommended. As you know, Scala (until 2.11) has 22 limitation, so you may need to use normal classes for entities to treat tables that have more than 22 columns.</p>
 
@@ -955,11 +948,13 @@ implicit val session = AutoSession
 
 <hr/>
 
-<h2 id="faq">FAQ</h2>
+<h3 id="faq">FAQ</h3>
 
 <hr/>
 
-<h3 id="unexpectednullvalueexception">UnexpectedNullValueException</h3>
+<h4 id="unexpectednullvalueexception">UnexpectedNullValueException</h4>
+
+<hr/>
 
 <p>If you see the following exception, your application code using Skinny ORM has a bug. This is not a framework bug.</p>
 <pre class="highlight plaintext">Caused by: scalikejdbc.UnexpectedNullValueException: null
