@@ -64,9 +64,9 @@
 
 <p>First, add <code>skinny-assets</code> to libraryDependencies.</p>
 <pre class="highlight plaintext">libraryDependencies ++= Seq(
-  "org.skinny-framework" %% "skinny-framework" % "1.1.1",
-  "org.skinny-framework" %% "skinny-assets"    % "1.1.1",
-  "org.skinny-framework" %% "skinny-test"      % "1.1.1" % "test"
+  "org.skinny-framework" %% "skinny-framework" % "1.1.2",
+  "org.skinny-framework" %% "skinny-assets"    % "1.1.2",
+  "org.skinny-framework" %% "skinny-test"      % "1.1.2" % "test"
 )
 </pre>
 
@@ -246,6 +246,20 @@ React.renderComponent(
     <span class="nc">MyAssetsController</span><span class="o">.</span><span class="n">mount</span><span class="o">(</span><span class="n">ctx</span><span class="o">)</span>
   <span class="o">}</span>
 <span class="o">}</span>
+</pre>
+
+<hr/>
+
+<h1 id="working-with-grunt">Working with Grunt</h1>
+
+<hr/>
+
+<p>skinny-blank-app has a Gruntfile.js sample. You can run assets watcher right now.</p>
+
+<p>See also: <code>src/main/webapp/WEB-INF/layouts/default.ssp</code> and <code>src/main/webapp/assets/grunt/*</code>.</p>
+<pre class="highlight plaintext">npm install
+npm install -g grunt-cli
+grunt
 </pre>
 
             <hr/>
