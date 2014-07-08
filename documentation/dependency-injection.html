@@ -64,6 +64,26 @@
 
 <p>An optional module <code>skinny-scaldi</code> is an easy-to-use Scaldi adaptor module which is developed by Skinny Framework team.</p>
 
+<p>See also the following blog article and example:</p>
+
+<p><a href="http://blog.seratch.net/post/90627493988/scaldi-dependency-injection-in-skinny-apps">http://blog.seratch.net/post/90627493988/scaldi-dependency-injection-in-skinny-apps</a></p>
+
+<p><a href="https://github.com/skinny-framework/skinny-scaldi-example/">https://github.com/skinny-framework/skinny-scaldi-example/</a></p>
+
+<hr/>
+
+<h3 id="don&#39;t-use-in-scala-2.10.x">Don&rsquo;t use in Scala 2.10.x</h3>
+
+<hr/>
+
+<p>This is an important notice. </p>
+
+<p>Due to <a href="https://issues.scala-lang.org/browse/SI-6240">SI-6240</a>, Scaldi doesn’t work fine in Scala 2.10.x. </p>
+
+<p><a href="https://github.com/scaldi/scaldi/issues/16">https://github.com/scaldi/scaldi/issues/16</a></p>
+
+<p>Use Scala 2.11 (or higher).</p>
+
 <hr/>
 
 <h3 id="setup">Setup</h3>
@@ -71,7 +91,7 @@
 <hr/>
 
 <p><code>skinny-scaldi</code> is an optional module (= not to be enabled by default). Add it to your libraryDependencies.</p>
-<pre class="highlight scala"><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"org.skinny-framework"</span> <span class="o">%%</span> <span class="s">"skinny-scaldi"</span> <span class="o">%</span> <span class="s">"1.1.4"</span>
+<pre class="highlight scala"><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"org.skinny-framework"</span> <span class="o">%%</span> <span class="s">"skinny-scaldi"</span> <span class="o">%</span> <span class="s">"1.1.6"</span>
 </pre>
 
 <hr/>
