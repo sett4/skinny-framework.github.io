@@ -101,7 +101,7 @@
   <span class="k">override</span> <span class="k">def</span> <span class="n">resourcesName</span> <span class="k">=</span> <span class="s">"programmers"</span>
   <span class="k">override</span> <span class="k">def</span> <span class="n">resourceName</span> <span class="k">=</span> <span class="s">"programmer"</span>
 
-  <span class="k">override</span> <span class="k">def</span> <span class="n">resourcesBasePath</span> <span class="k">=</span> <span class="n">s</span><span class="s">"/angular/${resourcesName}"</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">resourcesBasePath</span> <span class="k">=</span> <span class="n">s</span><span class="s">"/api/${resourcesName}"</span>
 
   <span class="k">override</span> <span class="k">def</span> <span class="n">createParams</span> <span class="k">=</span> <span class="nc">Params</span><span class="o">(</span><span class="n">params</span> <span class="o">+</span>
     <span class="o">(</span><span class="s">"hashedPassword"</span> <span class="o">-&gt;</span> <span class="n">params</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">PlainPassword</span><span class="o">](</span><span class="s">"plainTextPassword"</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">hash</span><span class="o">(</span><span class="s">"dummy salt"</span><span class="o">)))</span>
