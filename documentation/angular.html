@@ -117,7 +117,7 @@
     <span class="s">"hashedPassword"</span> <span class="o">-&gt;</span> <span class="nc">ProgrammerParamType</span><span class="o">.</span><span class="nc">HashedPassword</span>
   <span class="o">)</span>
 
-  <span class="k">override</span> <span class="k">def</span> <span class="n">updateParams</span> <span class="k">=</span> <span class="nc">Params</span><span class="o">(</span><span class="n">params</span><span class="o">).</span><span class="n">withDate</span><span class="o">(</span><span class="s">"birthday"</span><span class="o">)</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">updateParams</span> <span class="k">=</span> <span class="nc">Params</span><span class="o">(</span><span class="n">params</span><span class="o">)</span>
   <span class="k">override</span> <span class="k">def</span> <span class="n">updateForm</span> <span class="k">=</span> <span class="n">validation</span><span class="o">(</span><span class="n">updateParams</span><span class="o">,</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"id"</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span><span class="o">,</span>
     <span class="n">paramKey</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="n">is</span> <span class="n">required</span> <span class="o">&amp;</span> <span class="n">maxLength</span><span class="o">(</span><span class="mi">64</span><span class="o">),</span>
