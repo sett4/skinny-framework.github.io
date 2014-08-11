@@ -88,7 +88,7 @@
 
 <p>OAuth 2.0 is widely used for &ldquo;login&rdquo; feature. Skinny Framework provides some modules for that.</p>
 
-<p>We provides OAuth 2.0 login support by using Apache Oltu internally.</p>
+<p>Skinny&rsquo;s OAuth 2.0 modules uses Apache Oltu internally.</p>
 
 <p><a href="https://oltu.apache.org/">https://oltu.apache.org/</a></p>
 
@@ -98,7 +98,9 @@
 
 <hr/>
 
-<p><code>skinny-oauth2-controller</code> contains Facebook, GitHub and Google login features (OAuth 2.0).</p>
+<p><code>skinny-oauth2-controller</code> contains Facebook, GitHub and Google login features.</p>
+
+<p>Add the following depedency in your <code>project/Build.scala</code>.</p>
 <pre><code class="highlight scala"><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"org.skinny-framework"</span> <span class="o">%%</span> <span class="s">"skinny-oauth2-controller"</span> <span class="o">%</span> <span class="s">"1.2.9"</span>
 </code></pre>
 
@@ -208,6 +210,8 @@
 <p><a href="http://twitter4j.org/en/index.html">http://twitter4j.org/en/index.html</a></p>
 
 <hr/>
+
+<p>Add the following dependency in your <code>project/Build.scala</code>.</p>
 <pre><code class="highlight scala"><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"org.skinny-framework"</span> <span class="o">%%</span> <span class="s">"skinny-twitter-controller"</span> <span class="o">%</span> <span class="n">skinnyVersion</span>
 </code></pre>
 
