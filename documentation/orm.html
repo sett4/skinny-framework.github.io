@@ -100,7 +100,7 @@
 
 <p>Furthermore, the <code>#byDefault</code> option allows you to resolve assocations anytime. If you don&rsquo;t always need some association, miss the <code>#byDefault</code> and just use <code>#joins</code> method such as <code>Team.joins(Team.members).findById(123)</code> on demand.</p>
 
-<p>On the other hand, it&rsquo;s impossible to resolve all the nested attributes&#39; relationships by a single join query. If you need to resolve nested relationships, you can retrieve them with eager loading by using <code>#includes</code> method.</p>
+<p>On the other hand, it&rsquo;s impossible to resolve all the nested attributes&rsquo; relationships by a single join query. If you need to resolve nested relationships, you can retrieve them with eager loading by using <code>#includes</code> method.</p>
 
 <hr/>
 
@@ -997,7 +997,7 @@ implicit val session = AutoSession
 
 <span class="nc">Member</span><span class="o">.</span><span class="n">findById</span><span class="o">(</span><span class="n">id</span><span class="o">).</span><span class="n">map</span> <span class="o">{</span> <span class="n">member</span> <span class="k">=&gt;</span>
   <span class="n">member</span><span class="o">.</span><span class="n">copy</span><span class="o">(</span><span class="n">name</span> <span class="k">=</span> <span class="s">"Kaz"</span><span class="o">).</span><span class="n">save</span><span class="o">()</span>
-  <span class="n">member</span><span class="o">.</span><span class="n">destory</span><span class="o">()</span>
+  <span class="n">member</span><span class="o">.</span><span class="n">destroy</span><span class="o">()</span>
 <span class="o">}</span>
 </code></pre>
 

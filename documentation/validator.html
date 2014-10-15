@@ -134,7 +134,7 @@
 <span class="k">val</span> <span class="n">errorsForName</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Error</span><span class="o">]</span> <span class="k">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span>
 <span class="k">val</span> <span class="n">error</span><span class="k">:</span> <span class="kt">Error</span> <span class="o">=</span> <span class="n">errorsForName</span><span class="o">.</span><span class="n">head</span>
 <span class="n">error</span><span class="o">.</span><span class="n">name</span> <span class="c1">// -&gt; "required"
-</span><span class="n">error</span><span class="o">.</span><span class="n">messageParmas</span> <span class="c1">// -&gt; List("name")
+</span><span class="n">error</span><span class="o">.</span><span class="n">messageParams</span> <span class="c1">// -&gt; List("name")
 </span></code></pre>
 
 <p>A validation rule which accepts value when using such as <code>minLength(6)</code> is like this:</p>
@@ -193,7 +193,7 @@
 <p>skinny-validator&rsquo;s <code>Error</code> looks like this:</p>
 <pre><code class="highlight scala"><span class="k">val</span> <span class="n">error</span> <span class="k">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">head</span>
 <span class="n">error</span><span class="o">.</span><span class="n">name</span> <span class="c1">// -&gt; required
-</span><span class="n">error</span><span class="o">.</span><span class="n">messageParmas</span> <span class="c1">// -&gt; List("name")
+</span><span class="n">error</span><span class="o">.</span><span class="n">messageParams</span> <span class="c1">// -&gt; List("name")
 </span></code></pre>
 
 <p><code>skinny.validator.Messages</code> loads error messages from *.conf or *.properties.</p>
