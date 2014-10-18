@@ -273,6 +273,35 @@ table(class="table table-bordered")
 
 <p>And then, use <code>src/main/webapp/WEB-INF/views/members/index.html</code> instead.</p>
 
+<hr/>
+
+<h3 id="velocity">Velocity</h3>
+
+<hr/>
+
+<p>If you prefer the Velocity template engine, you can easily use it with Skinny framework.</p>
+
+<p><a href="http://velocity.apache.org/">http://velocity.apache.org/</a></p>
+
+<p>First, add <code>skinny-velocity</code> to your library-dependencies.</p>
+<pre><code class="highlight plaintext">libraryDependencies += "org.skinny-framework" %% "skinny-velocity" % skinnyVersion
+</code></pre>
+
+<p>Mixin <code>VelocityTemplateEngineFeature</code> to your controllers.</p>
+<pre><code class="highlight scala"><span class="k">import</span> <span class="nn">skinny.controller.feature.VelocityTemplateEngineFeature</span>
+
+<span class="k">class</span> <span class="nc">MembersController</span> <span class="k">extends</span> <span class="nc">SkinnyController</span>
+  <span class="k">with</span> <span class="nc">VelocityTemplateEngineFeature</span> <span class="o">{</span>
+
+  <span class="k">def</span> <span class="n">index</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">set</span><span class="o">(</span><span class="s">"members"</span><span class="o">,</span> <span class="nc">Member</span><span class="o">.</span><span class="n">findAll</span><span class="o">())</span>
+    <span class="n">render</span><span class="o">(</span><span class="s">"/members/index"</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+
+<p>And then, use <code>src/main/webapp/WEB-INF/views/members/index.html.vm</code> instead.</p>
+
             <hr/>
             <div class="alert alert-info small"> 
               If you find a typo or mistake in this page, please report or fix it. <a href="/contribution.html">How?</a>
