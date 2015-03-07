@@ -106,7 +106,7 @@
 
 <p>This is an important notice. </p>
 
-<p>Due to <a href="https://issues.scala-lang.org/browse/SI-6240">SI-6240</a>, Scaldi doesn’t work fine in Scala 2.10.x. </p>
+<p>Due to <a href="https://issues.scala-lang.org/browse/SI-6240">SI-6240</a>, Scaldi doesn’t work fine in Scala 2.10.x.</p>
 
 <p><a href="https://github.com/scaldi/scaldi/issues/16">https://github.com/scaldi/scaldi/issues/16</a></p>
 
@@ -163,11 +163,11 @@
 
 <h4 id="integrating-scaldi-modules-to-skinny-controllers">Integrating Scaldi modules to Skinny controllers</h4>
 
-<p><code>skinny-scaldi</code>&rsquo;s Scaldi integration is prety simple. Just prepare configuration and add <code>ScaldiFeature</code> trait to controllers.</p>
+<p><code>skinny-scaldi</code>&rsquo;s Scaldi integration is pretty simple. Just prepare configuration and add <code>ScaldiFeature</code> trait to controllers.</p>
 
 <p>And add modules to <code>src/main/resources/application.conf</code> like this. </p>
 
-<p>Be aware that module in <code>applicationc.conf</code> should be not an object but a class.</p>
+<p>Be aware that module in <code>application.conf</code> should be not an object but a class.</p>
 <pre class="highlight plaintext"><code>development {
   scaldi {
     modules: ["module.ServicesModule", "module.AppModule"]

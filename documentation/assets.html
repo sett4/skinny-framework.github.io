@@ -102,7 +102,7 @@
 
 <p>And then, add <code>AssetsController</code> to routes. Now you can easily use CoffeeScript, LESS and Sass.</p>
 <pre class="highlight scala"><code><span class="c1">// src/main/scala/ScalatraBootstrap.scala
-</span><span class="k">class</span> <span class="nc">ScalatraBootstrap</span> <span class="n">exntends</span> <span class="nc">SkinnyLifeCycle</span> <span class="o">{</span>
+</span><span class="k">class</span> <span class="nc">ScalatraBootstrap</span> <span class="k">extends</span> <span class="nc">SkinnyLifeCycle</span> <span class="o">{</span>
   <span class="k">override</span> <span class="k">def</span> <span class="n">initSkinnyApp</span><span class="o">(</span><span class="n">ctx</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
     <span class="nc">AssetsController</span><span class="o">.</span><span class="n">mount</span><span class="o">(</span><span class="n">ctx</span><span class="o">)</span>
   <span class="o">}</span>
@@ -244,7 +244,7 @@ React.renderComponent(
 
 <p>You can access the latest transformed JS file at <code>http://localhost:8080/assets/js/application.js</code>.</p>
 
-<p>Or when using only <code>scalajs:watch</code>, it&rsquo;s also possible to acces <code>src/main/webapp/assets/js/application-*.js</code> directly.</p>
+<p>Or when using only <code>scalajs:watch</code>, it&rsquo;s also possible to access <code>src/main/webapp/assets/js/application-*.js</code> directly.</p>
 
 <hr/>
 
@@ -271,7 +271,7 @@ React.renderComponent(
 <span class="o">}</span>
 
 <span class="c1">// src/main/scala/ScalatraBootstrap.scala
-</span><span class="k">class</span> <span class="nc">ScalatraBootstrap</span> <span class="n">exntends</span> <span class="nc">SkinnyLifeCycle</span> <span class="o">{</span>
+</span><span class="k">class</span> <span class="nc">ScalatraBootstrap</span> <span class="k">extends</span> <span class="nc">SkinnyLifeCycle</span> <span class="o">{</span>
   <span class="k">override</span> <span class="k">def</span> <span class="n">initSkinnyApp</span><span class="o">(</span><span class="n">ctx</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
     <span class="nc">MyAssetsController</span><span class="o">.</span><span class="n">mount</span><span class="o">(</span><span class="n">ctx</span><span class="o">)</span>
   <span class="o">}</span>

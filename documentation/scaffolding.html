@@ -166,7 +166,7 @@
 <span class="o">}</span>
 </code></pre>
 
-<p>Other assocications can be generated with the following convention.</p>
+<p>Other associations can be generated with the following convention.</p>
 
 <ul>
 <li>Option[{Entity}]: belongsTo association</li>
@@ -313,7 +313,7 @@
 
 <hr/>
 
-<p>Skinny ORM&rsquo;S CRUDMappper implements <code>skinny.SkinnyModel</code>&rsquo;s methods. If you&rsquo;d like to use other ORM or DB library, you can do that by implementing <code>SkinnyModel</code> trait.</p>
+<p>Skinny ORM&rsquo;S CRUDMapper implements <code>skinny.SkinnyModel</code>&rsquo;s methods. If you&rsquo;d like to use other ORM or DB library, you can do that by implementing <code>SkinnyModel</code> trait.</p>
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/common/src/main/scala/skinny/SkinnyModel.scala">https://github.com/skinny-framework/skinny-framework/blob/master/common/src/main/scala/skinny/SkinnyModel.scala</a></p>
 <pre class="highlight scala"><code><span class="k">object</span> <span class="nc">MembersController</span> <span class="k">extends</span> <span class="nc">SkinnyResource</span> <span class="k">with</span> <span class="nc">ApplicationController</span> <span class="o">{</span>
@@ -326,11 +326,11 @@
 
 <hr/>
 
-<h4 id="skinnyresource&#39;s-paginaation-for-oracle,-ms-sqlserver">SkinnyResource&rsquo;s paginaation for Oracle, MS SQLServer</h4>
+<h4 id="skinnyresource&#39;s-pagination-for-oracle,-ms-sqlserver">SkinnyResource&rsquo;s pagination for Oracle, MS SQLServer</h4>
 
 <hr/>
 
-<p>Skinny ORM doesn&rsquo;t support Oracle DB or MS SQLServer&rsquo;s pagenation. You should override <code>SkinnyModel#findModels(pageSize: Int, pageNo: Int): List[Model]</code> method for your RDBMS. </p>
+<p>Skinny ORM doesn&rsquo;t support Oracle DB or MS SQLServer&rsquo;s pagination. You should override <code>SkinnyModel#findModels(pageSize: Int, pageNo: Int): List[Model]</code> method for your RDBMS. </p>
 
 <p><a href="https://github.com/skinny-framework/skinny-framework/blob/master/common/src/main/scala/skinny/SkinnyModel.scala">https://github.com/skinny-framework/skinny-framework/blob/master/common/src/main/scala/skinny/SkinnyModel.scala</a></p>
 
@@ -421,7 +421,7 @@
 
 <hr/>
 
-<h4 id="reverse-*-all-commnds">reverse-*-all commnds</h4>
+<h4 id="reverse-*-all-commands">reverse-*-all commands</h4>
 
 <p><code>reverse-scaffold-all/reverse-model-all</code> commands generate all the code from existing database.</p>
 <pre class="highlight shell"><code>./skinny g reverse-model-all
@@ -451,7 +451,7 @@
 <span class="p">);</span>
 </code></pre>
 
-<p>When you run <code>reverse-scaffold-all</code> generator for this dababase schema, skinny command will show you following output.</p>
+<p>When you run <code>reverse-scaffold-all</code> generator for this database schema, skinny command will show you following output.</p>
 <pre class="highlight plaintext"><code>*** Skinny Reverse Engineering Task ***
 
   Table     : developer

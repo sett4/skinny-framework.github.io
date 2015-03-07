@@ -128,7 +128,7 @@
       &lt;a href="${s.url(MembersController.editUrl, "id" -&gt; member.id)}" 
          class="btn btn-info"&gt;Edit&lt;/a&gt;
       &lt;a data-method="delete" data-confirm="Are you sure?" 
-         href="${s.url(MembersControlller.deleteUrl, "id" -&gt; member.id)}" 
+         href="${s.url(MembersController.deleteUrl, "id" -&gt; member.id)}"
          class="btn btn-danger"&gt;Delete&lt;/a&gt;
 
       &lt;!-- Primitive HTML coding is also possible --&gt;
@@ -190,7 +190,7 @@ table(class="table table-bordered")
       td #{member.name}
       td
         a(href={s.url(MembersController.editUrl, "id" -&gt; member.id)} class="btn btn-info") Edit
-        a(data-method="delete" data-confirm="Are you sure?" href={s.url(MembersControlller.deleteUrl, "id" -&gt; member.id)} class="btn btn-danger") Delete
+        a(data-method="delete" data-confirm="Are you sure?" href={s.url(MembersController.deleteUrl, "id" -&gt; member.id)} class="btn btn-danger") Delete
         a(href={s"/members/${member.id}/edit"} class="btn btn-info") Edit
         a(data-method="delete" data-confirm="Are you sure?" href={s"/members/${member.id}"} class="btn btn-danger") Delete
 </code></pre>

@@ -141,7 +141,7 @@
 <span class="o">}</span>
 
 <span class="c1">// src/main/scala/ScalatraBootstrap.scala
-</span><span class="k">class</span> <span class="nc">ScalatraBootstrap</span> <span class="n">exntends</span> <span class="nc">SkinnyLifeCycle</span> <span class="o">{</span>
+</span><span class="k">class</span> <span class="nc">ScalatraBootstrap</span> <span class="k">extends</span> <span class="nc">SkinnyLifeCycle</span> <span class="o">{</span>
   <span class="k">override</span> <span class="k">def</span> <span class="n">initSkinnyApp</span><span class="o">(</span><span class="n">ctx</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// register routes
 </span>    <span class="nc">Controllers</span><span class="o">.</span><span class="n">members</span><span class="o">.</span><span class="n">mount</span><span class="o">(</span><span class="n">ctx</span><span class="o">)</span>
@@ -401,7 +401,7 @@ If you&rsquo;d like to customize routings (e.g. use only creation and deletion),
 
 <p>Contrary to your expectations, Scalatra doesn&rsquo;t run all the handlers for after and error. Only the first one would be applied and the others are just ignored. We think it&rsquo;s difficult to be aware of this specification (it&rsquo;s not a bug but by design). So SkinnyFilter&rsquo;s before/after/error handlers are always applied. </p>
 
-<p>For instance, in skinny-blank-app, ErrrorPageFilter is applied to ApplicationController. </p>
+<p>For instance, in skinny-blank-app, ErrorPageFilter is applied to ApplicationController. </p>
 <pre class="highlight scala"><code><span class="k">trait</span> <span class="nc">ApplicationController</span> <span class="k">extends</span> <span class="nc">SkinnyController</span>
   <span class="k">with</span> <span class="nc">ErrorPageFilter</span> <span class="o">{</span>
 
@@ -672,7 +672,7 @@ When you enable SkinnySession, these features also start using SkinnySession ins
 <pre class="highlight scala"><code><span class="k">import</span> <span class="nn">skinny.SkinnyServlet</span>
 <span class="k">import</span> <span class="nn">skinny.controller.feature.FileUploadFeature</span>
 
-<span class="c1">// SkinnySerlvet!!!
+<span class="c1">// SkinnyServlet!!!
 </span><span class="k">class</span> <span class="nc">FilesController</span> <span class="k">extends</span> <span class="nc">SkinnyServlet</span> <span class="k">with</span> <span class="nc">FileUploadFeature</span> <span class="o">{</span>
 
   <span class="k">def</span> <span class="n">upload</span> <span class="k">=</span> <span class="n">fileParams</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="s">"file"</span><span class="o">)</span> <span class="k">match</span> <span class="o">{</span>
@@ -788,7 +788,7 @@ When you enable SkinnySession, these features also start using SkinnySession ins
 
 <hr/>
 
-<p>The following is a simple dashboard application which collects serveral futures within the <code>index</code> method.</p>
+<p>The following is a simple dashboard application which collects several futures within the <code>index</code> method.</p>
 
 <p>Since Skinny 1.2.0, you can easily access request and requestScope from Futures by using futureWithRequest block.</p>
 <pre class="highlight scala"><code><span class="k">package</span> <span class="nn">controller</span>

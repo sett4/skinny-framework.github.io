@@ -98,7 +98,7 @@
 
 <p><code>#belongsTo</code>, <code>#hasOne</code> and <code>#hasMany(Through)</code> associations are converted into join queries, so you don&rsquo;t need to worry about performance problems caused by N+1 queries. </p>
 
-<p>Furthermore, the <code>#byDefault</code> option allows you to resolve assocations anytime. If you don&rsquo;t always need some association, miss the <code>#byDefault</code> and just use <code>#joins</code> method such as <code>Team.joins(Team.members).findById(123)</code> on demand.</p>
+<p>Furthermore, the <code>#byDefault</code> option allows you to resolve associations anytime. If you don&rsquo;t always need some association, miss the <code>#byDefault</code> and just use <code>#joins</code> method such as <code>Team.joins(Team.members).findById(123)</code> on demand.</p>
 
 <p>On the other hand, it&rsquo;s impossible to resolve all the nested attributes&rsquo; relationships by a single join query. If you need to resolve nested relationships, you can retrieve them with eager loading by using <code>#includes</code> method.</p>
 
@@ -439,7 +439,7 @@ implicit val session = AutoSession
 <span class="nc">Order</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="n">sqls</span><span class="o">.</span><span class="n">eq</span><span class="o">(</span><span class="n">o</span><span class="o">.</span><span class="n">cancelled</span><span class="o">,</span> <span class="kc">false</span><span class="o">)).</span><span class="n">distinctCount</span><span class="o">(</span><span class="ss">'customerId)</span>
 
 <span class="c1">// ------------
-// calcuations
+// calculations
 // min, max, average and sum
 </span>
 <span class="nc">Order</span><span class="o">.</span><span class="n">sum</span><span class="o">(</span><span class="ss">'amount)</span>
@@ -480,7 +480,7 @@ implicit val session = AutoSession
 
 <span class="c1">// update by condition
 </span>
-<span class="nc">Member</span><span class="o">.</span><span class="n">updateBy</span><span class="o">(</span><span class="n">sqls</span><span class="o">.</span><span class="n">eq</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="n">groupId</span><span class="o">,</span> <span class="mi">123</span><span class="o">)).</span><span class="n">withAttribtues</span><span class="o">(</span><span class="ss">'groupId </span><span class="o">-&gt;</span> <span class="mi">234</span><span class="o">)</span>
+<span class="nc">Member</span><span class="o">.</span><span class="n">updateBy</span><span class="o">(</span><span class="n">sqls</span><span class="o">.</span><span class="n">eq</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="n">groupId</span><span class="o">,</span> <span class="mi">123</span><span class="o">)).</span><span class="n">withAttributes</span><span class="o">(</span><span class="ss">'groupId </span><span class="o">-&gt;</span> <span class="mi">234</span><span class="o">)</span>
 
 <span class="c1">// ------------
 // delete
@@ -517,7 +517,7 @@ implicit val session = AutoSession
 
 <hr/>
 
-<p>Same as ActiveRecord&rsquo;s <code>belongs_to</code> assocation:</p>
+<p>Same as ActiveRecord&rsquo;s <code>belongs_to</code> association:</p>
 
 <p><a href="http://guides.rubyonrails.org/association_basics.html#the-belongs-to-association">http://guides.rubyonrails.org/association_basics.html#the-belongs-to-association</a></p>
 
@@ -581,7 +581,7 @@ implicit val session = AutoSession
 
 <hr/>
 
-<p>Same as ActiveRecord&rsquo;s <code>has_one</code> assocation:</p>
+<p>Same as ActiveRecord&rsquo;s <code>has_one</code> association:</p>
 
 <p><a href="http://guides.rubyonrails.org/association_basics.html#the-has-one-association">http://guides.rubyonrails.org/association_basics.html#the-has-one-association</a></p>
 
@@ -616,7 +616,7 @@ implicit val session = AutoSession
 
 <hr/>
 
-<p>Same as ActiveRecord&rsquo;s <code>has_many</code> assocation:</p>
+<p>Same as ActiveRecord&rsquo;s <code>has_many</code> association:</p>
 
 <p><a href="http://guides.rubyonrails.org/association_basics.html#the-has-many-association">http://guides.rubyonrails.org/association_basics.html#the-has-many-association</a></p>
 
@@ -767,7 +767,7 @@ implicit val session = AutoSession
 
 <hr/>
 
-<p>Skinny ORM provides the folllowing settings to overwrite.</p>
+<p>Skinny ORM provides the following settings to overwrite.</p>
 <pre class="highlight scala"><code><span class="k">object</span> <span class="nc">GroupMember</span> 
   <span class="k">extends</span> <span class="nc">SkinnyCRUDMapper</span><span class="o">[</span><span class="kt">Member</span><span class="o">]</span>
   <span class="k">with</span> <span class="nc">TimestampsFeature</span><span class="o">[</span><span class="kt">Member</span><span class="o">]</span>
@@ -922,9 +922,9 @@ implicit val session = AutoSession
 </code></pre>
 
 <p>If you&rsquo;re using Skinny-ORM with Skinny Framework,
-<a href="https://github.com/skinny-framework/skinny-framework/blob/master/orm/src/main/scala/skinny/orm/servlet/TxPerRequestFilter.scala">skinny.orm.servlet.TxPerRequestFilter</a> simplifies your applciations.</p>
+<a href="https://github.com/skinny-framework/skinny-framework/blob/master/orm/src/main/scala/skinny/orm/servlet/TxPerRequestFilter.scala">skinny.orm.servlet.TxPerRequestFilter</a> simplifies your applications.</p>
 <pre class="highlight scala"><code><span class="c1">// src/main/scala/ScalatraBootstrap.scala
-</span><span class="k">class</span> <span class="nc">ScalatraBootstrap</span> <span class="n">exntends</span> <span class="nc">SkinnyLifeCycle</span> <span class="o">{</span>
+</span><span class="k">class</span> <span class="nc">ScalatraBootstrap</span> <span class="k">extends</span> <span class="nc">SkinnyLifeCycle</span> <span class="o">{</span>
   <span class="k">override</span> <span class="k">def</span> <span class="n">initSkinnyApp</span><span class="o">(</span><span class="n">ctx</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">ctx</span><span class="o">.</span><span class="n">mount</span><span class="o">(</span><span class="k">new</span> <span class="nc">TxPerRequestFilter</span><span class="o">,</span> <span class="s">"/*"</span><span class="o">)</span>
   <span class="o">}</span>
@@ -959,7 +959,7 @@ implicit val session = AutoSession
   <span class="o">)</span>
 <span class="o">}</span>
 
-<span class="k">val</span> <span class="n">m</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Member</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Memmber</span><span class="o">.</span><span class="n">findById</span><span class="o">(</span><span class="nc">UUID</span><span class="o">.</span><span class="n">fromString</span><span class="o">(</span><span class="s">"....."</span><span class="o">))</span>
+<span class="k">val</span> <span class="n">m</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Member</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Member</span><span class="o">.</span><span class="n">findById</span><span class="o">(</span><span class="nc">UUID</span><span class="o">.</span><span class="n">fromString</span><span class="o">(</span><span class="s">"....."</span><span class="o">))</span>
 </code></pre>
 
 <p>Don&rsquo;t worry. Skinny-ORM does well at resolving associations even if you use custom primary keys.</p>
@@ -970,7 +970,7 @@ implicit val session = AutoSession
 
 <hr/>
 
-<p><code>timetamps</code> from ActiveRecord is available as the <code>TimestampsFeature</code> trait. </p>
+<p><code>timestamps</code> from ActiveRecord is available as the <code>TimestampsFeature</code> trait.</p>
 
 <p>By default, this trait expects two columns on the table - <code>created_at timestamp not null</code> and <code>updated_at timestamp</code>. If you need customizing, override *FieldName methods as follows.</p>
 <pre class="highlight scala"><code><span class="k">class</span> <span class="nc">Member</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">createdAt</span><span class="k">:</span> <span class="kt">DateTime</span><span class="o">,</span> <span class="n">updatedAt</span><span class="k">:</span> <span class="kt">DateTime</span><span class="o">)</span>
