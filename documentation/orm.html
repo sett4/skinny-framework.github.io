@@ -545,7 +545,7 @@ implicit val session = AutoSession
   <span class="o">).</span><span class="n">byDefault</span>
 
   <span class="c1">// when you cannot use defaultAlias, use this instead
-</span>  <span class="k">lazy</span> <span class="k">val</span> <span class="n">mentorAlais</span> <span class="k">=</span> <span class="n">createAlias</span><span class="o">(</span><span class="s">"mentor"</span><span class="o">)</span>
+</span>  <span class="k">lazy</span> <span class="k">val</span> <span class="n">mentorAlias</span> <span class="k">=</span> <span class="n">createAlias</span><span class="o">(</span><span class="s">"mentor"</span><span class="o">)</span>
   <span class="k">lazy</span> <span class="k">val</span> <span class="n">mentor</span> <span class="k">=</span> <span class="n">belongsToWithAlias</span><span class="o">(</span>
     <span class="c1">// in this case, "mentor" alias will be used in join query
 </span>    <span class="c1">// the fk's name will be {aliasName} + {primaryKeyFieldName}
